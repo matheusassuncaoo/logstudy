@@ -1,0 +1,7 @@
+{
+  "name": "logstudy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
