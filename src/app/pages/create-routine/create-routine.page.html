@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref="/tabs/estudos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isEditMode ? 'Editar Rotina' : 'Nova Rotina' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="routine-container">
+    <form class="routine-form" (ngSubmit)="saveRoutine()">
+      <div class="form-section">
+        <h2>Informações Básicas</h2>
+        
+        <ion-item lines="full">
+          <ion-label position="floating">Nome da Rotina</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="routine.name" 
+            name="name"
+            placeholder="Ex: Estudo de Matemática"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Matéria</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="routine.subject" 
+            name="subject"
+            placeholder="Ex: Cálculo I"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label>Cor</ion-label>
+          <ion-select [(ngModel)]="routine.color" name="color" interface="popover">
+            <ion-select-option *ngFor="let color of colorOptions" [value]="color.value">
+              <span [style.color]="color.hex">●</span> {{color.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label>Ícone</ion-label>
+          <ion-select [(ngModel)]="routine.icon" name="icon" interface="popover">
+            <ion-select-option *ngFor="let icon of iconOptions" [value]="icon">
+              <ion-icon [name]="icon"></ion-icon> {{ icon }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div class="form-section">
+        <h2>Configurações do Pomodoro</h2>
+
+        <ion-item lines="full">
+          <ion-label position="stacked">
+            Tempo de Foco (minutos)
+            <ion-text color="medium" class="value-display">{{routine.pomodoroTime}} min</ion-text>
+          </ion-label>
+          <ion-range 
+            [(ngModel)]="routine.pomodoroTime" 
+            name="pomodoroTime"
+            min="15" 
+            max="60" 
+            step="5"
+            pin="true"
+            color="primary">
+          </ion-range>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="stacked">
+            Pausa Curta (minutos)
+            <ion-text color="medium" class="value-display">{{routine.shortBreakTime}} min</ion-text>
+          </ion-label>
+          <ion-range 
+            [(ngModel)]="routine.shortBreakTime" 
+            name="shortBreakTime"
+            min="3" 
+            max="10" 
+            step="1"
+            pin="true"
+            color="secondary">
+          </ion-range>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="stacked">
+            Pausa Longa (minutos)
+            <ion-text color="medium" class="value-display">{{routine.longBreakTime}} min</ion-text>
+          </ion-label>
+          <ion-range 
+            [(ngModel)]="routine.longBreakTime" 
+            name="longBreakTime"
+            min="10" 
+            max="30" 
+            step="5"
+            pin="true"
+            color="tertiary">
+          </ion-range>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="stacked">
+            Sessões antes da Pausa Longa
+            <ion-text color="medium" class="value-display">{{routine.intervalsBeforeLongBreak}} sessões</ion-text>
+          </ion-label>
+          <ion-range 
+            [(ngModel)]="routine.intervalsBeforeLongBreak" 
+            name="intervalsBeforeLongBreak"
+            min="2" 
+            max="6" 
+            step="1"
+            pin="true"
+            color="accent">
+          </ion-range>
+        </ion-item>
+      </div>
+
+      <div class="action-buttons">
+        <ion-button 
+          expand="block" 
+          type="submit" 
+          size="large"
+          [disabled]="!routine.name || !routine.subject">
+          {{ isEditMode ? 'Atualizar Rotina' : 'Criar Rotina' }}
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

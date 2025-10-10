@@ -1,0 +1,234 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/auth"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Política de Privacidade</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="privacy-container">
+    <div class="last-update">
+      <p>Última atualização: {{ lastUpdate }}</p>
+    </div>
+
+    <section>
+      <h2>1. Introdução</h2>
+      <p>
+        O LogStudy ("nós", "nosso" ou "Aplicativo") valoriza sua privacidade e está comprometido em proteger suas 
+        informações pessoais. Esta Política de Privacidade explica como coletamos, usamos, divulgamos e protegemos 
+        suas informações quando você usa nosso aplicativo móvel.
+      </p>
+      <p>
+        Esta política está em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018) do Brasil 
+        e o Regulamento Geral de Proteção de Dados (GDPR) da União Europeia.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Informações que Coletamos</h2>
+      
+      <h3>2.1. Informações Fornecidas por Você</h3>
+      <ul>
+        <li><strong>Dados de Cadastro:</strong> Nome, email, senha (criptografada)</li>
+        <li><strong>Dados de Perfil:</strong> Foto de perfil (opcional), preferências de estudo</li>
+        <li><strong>Dados de Uso:</strong> Rotinas de estudo criadas, sessões Pomodoro, histórico de estudos</li>
+      </ul>
+
+      <h3>2.2. Informações Coletadas Automaticamente</h3>
+      <ul>
+        <li><strong>Dados do Dispositivo:</strong> Modelo do dispositivo, sistema operacional, versão do aplicativo</li>
+        <li><strong>Dados de Uso:</strong> Tempo de uso do aplicativo, funcionalidades acessadas, preferências</li>
+        <li><strong>Dados de Localização:</strong> Apenas se você conceder permissão (usado para lembretes baseados em localização)</li>
+        <li><strong>Notificações:</strong> Tokens de push notification para envio de lembretes</li>
+      </ul>
+
+      <h3>2.3. Cookies e Tecnologias Similares</h3>
+      <p>
+        Utilizamos tecnologias como cookies, tokens de sessão e armazenamento local para melhorar sua experiência, 
+        manter você conectado e lembrar suas preferências.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Como Usamos Suas Informações</h2>
+      <p>Utilizamos suas informações para:</p>
+      <ul>
+        <li><strong>Fornecer o Serviço:</strong> Criar e gerenciar sua conta, salvar suas rotinas de estudo</li>
+        <li><strong>Melhorar o Aplicativo:</strong> Analisar como você usa o aplicativo para aprimorar funcionalidades</li>
+        <li><strong>Comunicação:</strong> Enviar notificações sobre sessões de estudo, atualizações importantes</li>
+        <li><strong>Suporte:</strong> Responder suas dúvidas e solucionar problemas técnicos</li>
+        <li><strong>Segurança:</strong> Detectar e prevenir fraudes, abusos e atividades ilegais</li>
+        <li><strong>Cumprimento Legal:</strong> Cumprir obrigações legais e regulatórias</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Base Legal para Processamento (LGPD/GDPR)</h2>
+      <p>Processamos seus dados pessoais com base em:</p>
+      <ul>
+        <li><strong>Consentimento:</strong> Você nos forneceu consentimento explícito</li>
+        <li><strong>Execução de Contrato:</strong> Necessário para fornecer os serviços que você solicitou</li>
+        <li><strong>Interesse Legítimo:</strong> Melhorar nossos serviços e prevenir fraudes</li>
+        <li><strong>Obrigação Legal:</strong> Cumprir leis e regulamentos aplicáveis</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Compartilhamento de Informações</h2>
+      <p>
+        <strong>Não vendemos suas informações pessoais.</strong> Podemos compartilhar suas informações apenas nas 
+        seguintes circunstâncias:
+      </p>
+      <ul>
+        <li><strong>Provedores de Serviço:</strong> Empresas que nos ajudam a operar o aplicativo (hospedagem, análise, notificações push)</li>
+        <li><strong>Requisitos Legais:</strong> Quando exigido por lei, ordem judicial ou processo legal</li>
+        <li><strong>Proteção de Direitos:</strong> Para proteger nossos direitos, propriedade ou segurança</li>
+        <li><strong>Transferência de Negócio:</strong> Em caso de fusão, aquisição ou venda de ativos</li>
+      </ul>
+
+      <h3>Provedores de Serviço que Utilizamos:</h3>
+      <ul>
+        <li>Google Firebase (Autenticação, Database, Analytics)</li>
+        <li>Amazon Web Services (Hospedagem)</li>
+        <li>OneSignal ou Firebase Cloud Messaging (Notificações Push)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Seus Direitos (LGPD/GDPR)</h2>
+      <p>Você tem os seguintes direitos sobre seus dados pessoais:</p>
+      <ul>
+        <li><strong>Acesso:</strong> Solicitar cópia dos dados que temos sobre você</li>
+        <li><strong>Correção:</strong> Atualizar ou corrigir informações incorretas</li>
+        <li><strong>Exclusão:</strong> Solicitar a remoção de seus dados pessoais</li>
+        <li><strong>Portabilidade:</strong> Receber seus dados em formato estruturado e legível</li>
+        <li><strong>Oposição:</strong> Opor-se ao processamento de seus dados</li>
+        <li><strong>Restrição:</strong> Solicitar limitação do uso de seus dados</li>
+        <li><strong>Revogação de Consentimento:</strong> Retirar consentimento a qualquer momento</li>
+      </ul>
+      <p>
+        Para exercer esses direitos, acesse Menu > Perfil > Configurações > Privacidade e Dados, 
+        ou entre em contato em: <strong>privacidade@logstudy.com.br</strong>
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Retenção de Dados</h2>
+      <p>
+        Mantemos suas informações pessoais apenas pelo tempo necessário para os fins descritos nesta política, 
+        ou conforme exigido por lei. Quando você excluir sua conta:
+      </p>
+      <ul>
+        <li>Seus dados pessoais serão removidos em até 30 dias</li>
+        <li>Dados anonimizados podem ser retidos para análises agregadas</li>
+        <li>Backups podem reter dados por até 90 dias por motivos técnicos</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Segurança</h2>
+      <p>Implementamos medidas de segurança para proteger suas informações:</p>
+      <ul>
+        <li><strong>Criptografia:</strong> Dados em trânsito (HTTPS/TLS) e em repouso (AES-256)</li>
+        <li><strong>Autenticação:</strong> Senhas criptografadas com bcrypt, autenticação JWT</li>
+        <li><strong>Controle de Acesso:</strong> Acesso restrito a dados pessoais apenas para funcionários autorizados</li>
+        <li><strong>Monitoramento:</strong> Logs de segurança e detecção de atividades suspeitas</li>
+        <li><strong>Atualizações:</strong> Manutenção regular de sistemas e patches de segurança</li>
+      </ul>
+      <p>
+        No entanto, nenhum método de transmissão pela Internet é 100% seguro. Não podemos garantir segurança absoluta.
+      </p>
+    </section>
+
+    <section>
+      <h2>9. Crianças e Menores</h2>
+      <p>
+        O Aplicativo não é direcionado a menores de 13 anos. Não coletamos intencionalmente informações de crianças. 
+        Se você tiver entre 13 e 18 anos, deve usar o aplicativo apenas com consentimento de seus pais ou responsáveis.
+      </p>
+      <p>
+        Se tomarmos conhecimento de que coletamos dados de menores de 13 anos, tomaremos medidas para excluir 
+        essas informações imediatamente.
+      </p>
+    </section>
+
+    <section>
+      <h2>10. Transferência Internacional de Dados</h2>
+      <p>
+        Seus dados podem ser transferidos e armazenados em servidores localizados fora do Brasil. Ao usar o aplicativo, 
+        você consente com essas transferências. Garantimos que tais transferências cumpram os requisitos da LGPD e GDPR, 
+        incluindo cláusulas contratuais padrão aprovadas.
+      </p>
+    </section>
+
+    <section>
+      <h2>11. Uso de Analytics</h2>
+      <p>
+        Utilizamos ferramentas de análise (Google Analytics, Firebase Analytics) para entender como o aplicativo 
+        é usado. Esses serviços podem coletar:
+      </p>
+      <ul>
+        <li>Informações sobre sessões e eventos no aplicativo</li>
+        <li>Dados demográficos e de interesse (anonimizados)</li>
+        <li>Informações sobre crashes e erros</li>
+      </ul>
+      <p>
+        Você pode desativar o compartilhamento de dados analíticos em Configurações > Privacidade > Compartilhar Dados de Uso.
+      </p>
+    </section>
+
+    <section>
+      <h2>12. Alterações nesta Política</h2>
+      <p>
+        Podemos atualizar esta Política de Privacidade periodicamente. Notificaremos você sobre alterações significativas 
+        através de:
+      </p>
+      <ul>
+        <li>Notificação no aplicativo</li>
+        <li>Email para o endereço cadastrado</li>
+        <li>Aviso na tela de login</li>
+      </ul>
+      <p>
+        Recomendamos revisar esta política regularmente. Seu uso continuado do aplicativo após alterações constitui 
+        aceitação da nova política.
+      </p>
+    </section>
+
+    <section>
+      <h2>13. Encarregado de Dados (DPO)</h2>
+      <p>
+        Nosso Encarregado de Proteção de Dados (Data Protection Officer) está disponível para esclarecer dúvidas 
+        sobre esta política e o tratamento de seus dados:
+      </p>
+      <ul>
+        <li><strong>Nome:</strong> [Nome do DPO]</li>
+        <li><strong>Email:</strong> dpo@logstudy.com.br</li>
+        <li><strong>Endereço:</strong> [Endereço da empresa]</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>14. Contato</h2>
+      <p>
+        Para questões sobre esta Política de Privacidade ou exercer seus direitos, entre em contato:
+      </p>
+      <ul>
+        <li><strong>Email:</strong> privacidade@logstudy.com.br</li>
+        <li><strong>Suporte no App:</strong> Menu > Perfil > Ajuda e Suporte</li>
+        <li><strong>Website:</strong> www.logstudy.com.br/privacidade</li>
+      </ul>
+    </section>
+
+    <div class="acceptance">
+      <ion-button expand="block" (click)="acceptPrivacy()" *ngIf="showAcceptButton">
+        Aceitar Política de Privacidade
+      </ion-button>
+      
+      <ion-button expand="block" fill="outline" (click)="goToTerms()">
+        Ver Termos de Uso
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

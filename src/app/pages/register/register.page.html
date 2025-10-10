@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref="/welcome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Criar Conta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="register-container">
+    <div class="register-header">
+      <ion-icon name="person-add-outline" class="app-icon"></ion-icon>
+      <h1>Crie sua conta</h1>
+      <p>Comece sua jornada de estudos hoje</p>
+    </div>
+
+    <form class="register-form" (ngSubmit)="onRegister()">
+      <ion-item lines="full">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input 
+          type="text" 
+          [(ngModel)]="name" 
+          name="name"
+          placeholder="Seu nome completo"
+          [disabled]="isLoading"
+          required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email"
+          placeholder="seu@email.com"
+          [disabled]="isLoading"
+          required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input 
+          [type]="showPassword ? 'text' : 'password'" 
+          [(ngModel)]="password" 
+          name="password"
+          placeholder="Mínimo 6 caracteres"
+          [disabled]="isLoading"
+          required>
+        </ion-input>
+        <ion-button 
+          slot="end" 
+          fill="clear" 
+          (click)="togglePasswordVisibility()"
+          type="button">
+          <ion-icon 
+            slot="icon-only" 
+            [name]="showPassword ? 'eye-off-outline' : 'eye-outline'">
+          </ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Confirmar Senha</ion-label>
+        <ion-input 
+          [type]="showConfirmPassword ? 'text' : 'password'" 
+          [(ngModel)]="confirmPassword" 
+          name="confirmPassword"
+          placeholder="Digite a senha novamente"
+          [disabled]="isLoading"
+          required>
+        </ion-input>
+        <ion-button 
+          slot="end" 
+          fill="clear" 
+          (click)="toggleConfirmPasswordVisibility()"
+          type="button">
+          <ion-icon 
+            slot="icon-only" 
+            [name]="showConfirmPassword ? 'eye-off-outline' : 'eye-outline'">
+          </ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <div class="terms-section">
+        <ion-item lines="none">
+          <ion-checkbox 
+            slot="start"
+            [(ngModel)]="termsAccepted" 
+            name="termsAccepted">
+          </ion-checkbox>
+          <ion-label class="ion-text-wrap">
+            Eu li e aceito os 
+            <a (click)="goToTerms($event)">Termos de Uso</a>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-checkbox 
+            slot="start"
+            [(ngModel)]="privacyAccepted" 
+            name="privacyAccepted">
+          </ion-checkbox>
+          <ion-label class="ion-text-wrap">
+            Eu li e aceito a 
+            <a (click)="goToPrivacy($event)">Política de Privacidade</a>
+          </ion-label>
+        </ion-item>
+      </div>
+
+      <ion-button 
+        expand="block" 
+        type="submit" 
+        size="large"
+        class="register-button"
+        [disabled]="isLoading || !termsAccepted || !privacyAccepted">
+        <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+        <span *ngIf="!isLoading">Criar Conta</span>
+      </ion-button>
+    </form>
+
+    <div class="divider">
+      <span>ou</span>
+    </div>
+
+    <div class="login-section">
+      <p>Já tem uma conta?</p>
+      <ion-button 
+        fill="outline" 
+        expand="block" 
+        (click)="goToLogin()"
+        [disabled]="isLoading">
+        Fazer Login
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

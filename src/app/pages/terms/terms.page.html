@@ -1,0 +1,162 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/auth"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Termos de Uso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="terms-container">
+    <div class="last-update">
+      <p>Última atualização: {{ lastUpdate }}</p>
+    </div>
+
+    <section>
+      <h2>1. Aceitação dos Termos</h2>
+      <p>
+        Ao acessar e usar o aplicativo LogStudy ("Aplicativo"), você concorda em cumprir e estar vinculado aos seguintes 
+        Termos de Uso. Se você não concordar com qualquer parte destes termos, não deverá usar este Aplicativo.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Descrição do Serviço</h2>
+      <p>
+        O LogStudy é um aplicativo de gerenciamento de estudos que utiliza a técnica Pomodoro para auxiliar usuários 
+        a organizarem suas rotinas de estudo. O Aplicativo permite:
+      </p>
+      <ul>
+        <li>Criar e gerenciar rotinas de estudo personalizadas</li>
+        <li>Utilizar cronômetros Pomodoro para sessões de estudo</li>
+        <li>Acompanhar histórico e estatísticas de estudos</li>
+        <li>Configurar notificações e lembretes</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Cadastro e Conta de Usuário</h2>
+      <p>
+        Para utilizar determinadas funcionalidades do Aplicativo, você precisará criar uma conta fornecendo informações 
+        precisas e completas. Você é responsável por:
+      </p>
+      <ul>
+        <li>Manter a confidencialidade de sua senha e credenciais de acesso</li>
+        <li>Todas as atividades que ocorram sob sua conta</li>
+        <li>Notificar imediatamente sobre qualquer uso não autorizado de sua conta</li>
+        <li>Fornecer informações verdadeiras, precisas e atualizadas</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Uso Aceitável</h2>
+      <p>Você concorda em usar o Aplicativo apenas para fins legais e de acordo com estes Termos. É proibido:</p>
+      <ul>
+        <li>Violar qualquer lei ou regulamento aplicável</li>
+        <li>Tentar obter acesso não autorizado ao Aplicativo ou sistemas relacionados</li>
+        <li>Interferir ou interromper a integridade ou desempenho do Aplicativo</li>
+        <li>Usar o Aplicativo para fins comerciais sem autorização prévia</li>
+        <li>Copiar, modificar ou criar trabalhos derivados do Aplicativo</li>
+        <li>Fazer engenharia reversa ou tentar extrair o código-fonte</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Propriedade Intelectual</h2>
+      <p>
+        Todo o conteúdo do Aplicativo, incluindo mas não limitado a textos, gráficos, logos, ícones, imagens, 
+        código-fonte e software, é propriedade do LogStudy ou de seus licenciadores e está protegido por leis de 
+        direitos autorais e propriedade intelectual.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Privacidade e Dados Pessoais</h2>
+      <p>
+        O uso de suas informações pessoais é regido por nossa 
+        <a (click)="goToPrivacy()" class="link">Política de Privacidade</a>. 
+        Ao usar o Aplicativo, você concorda com a coleta e uso de informações de acordo com nossa Política de Privacidade.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Assinaturas e Pagamentos</h2>
+      <p>
+        Algumas funcionalidades do Aplicativo podem exigir o pagamento de taxas de assinatura. Ao adquirir uma assinatura:
+      </p>
+      <ul>
+        <li>Você autoriza a cobrança recorrente no método de pagamento fornecido</li>
+        <li>As assinaturas são renovadas automaticamente, salvo cancelamento</li>
+        <li>Você pode cancelar sua assinatura a qualquer momento através das configurações</li>
+        <li>Reembolsos seguem a política da loja de aplicativos (Google Play Store)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Isenção de Garantias</h2>
+      <p>
+        O Aplicativo é fornecido "no estado em que se encontra" e "conforme disponível", sem garantias de qualquer tipo, 
+        expressas ou implícitas. Não garantimos que:
+      </p>
+      <ul>
+        <li>O Aplicativo estará sempre disponível ou livre de erros</li>
+        <li>Os defeitos serão corrigidos</li>
+        <li>O Aplicativo atenderá suas necessidades específicas</li>
+        <li>Os resultados obtidos serão precisos ou confiáveis</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Limitação de Responsabilidade</h2>
+      <p>
+        Em nenhuma circunstância o LogStudy, seus diretores, funcionários ou afiliados serão responsáveis por quaisquer 
+        danos diretos, indiretos, incidentais, especiais, consequenciais ou punitivos decorrentes do uso ou incapacidade 
+        de usar o Aplicativo.
+      </p>
+    </section>
+
+    <section>
+      <h2>10. Modificações dos Termos</h2>
+      <p>
+        Reservamo-nos o direito de modificar estes Termos de Uso a qualquer momento. As alterações entrarão em vigor 
+        imediatamente após a publicação no Aplicativo. Seu uso continuado do Aplicativo após tais alterações constitui 
+        aceitação dos novos termos.
+      </p>
+    </section>
+
+    <section>
+      <h2>11. Rescisão</h2>
+      <p>
+        Podemos suspender ou encerrar seu acesso ao Aplicativo imediatamente, sem aviso prévio ou responsabilidade, 
+        por qualquer motivo, incluindo, sem limitação, se você violar estes Termos de Uso.
+      </p>
+    </section>
+
+    <section>
+      <h2>12. Lei Aplicável</h2>
+      <p>
+        Estes Termos serão regidos e interpretados de acordo com as leis do Brasil, sem considerar conflitos de 
+        disposições legais. Qualquer disputa relacionada a estes Termos será submetida à jurisdição exclusiva dos 
+        tribunais brasileiros.
+      </p>
+    </section>
+
+    <section>
+      <h2>13. Contato</h2>
+      <p>
+        Se você tiver dúvidas sobre estes Termos de Uso, entre em contato conosco:
+      </p>
+      <ul>
+        <li>Email: suporte@logstudy.com.br</li>
+        <li>Aplicativo: Menu Perfil > Ajuda e Suporte</li>
+      </ul>
+    </section>
+
+    <div class="acceptance">
+      <ion-button expand="block" (click)="acceptTerms()" *ngIf="showAcceptButton">
+        Aceitar Termos de Uso
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

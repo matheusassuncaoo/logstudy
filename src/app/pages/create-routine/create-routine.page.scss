@@ -1,0 +1,48 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.routine-container {
+  padding: 16px;
+  padding-bottom: 32px;
+}
+
+.routine-form {
+  .form-section {
+    margin-bottom: 32px;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 16px 8px;
+      color: var(--ion-text-color);
+    }
+
+    ion-item {
+      --background: var(--ion-item-background);
+      --border-color: var(--ion-item-border-color);
+      margin-bottom: 12px;
+      --border-radius: 12px;
+
+      .value-display {
+        display: block;
+        font-size: 14px;
+        margin-top: 4px;
+      }
+    }
+
+    ion-range {
+      padding: 16px 0;
+    }
+  }
+
+  .action-buttons {
+    margin-top: 24px;
+    padding: 0 8px;
+
+    ion-button {
+      --border-radius: 12px;
+      font-weight: 600;
+    }
+  }
+}

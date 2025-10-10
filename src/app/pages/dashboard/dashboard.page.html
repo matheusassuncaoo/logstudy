@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>LogStudy</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToSettings()">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="dashboard-container">
+    <!-- Stats Cards -->
+    <div class="stats-section">
+      <ion-card class="stat-card">
+        <ion-card-content>
+          <div class="stat-icon">
+            <ion-icon name="time" color="primary"></ion-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ formatTime(totalStudyTime) }}</h3>
+            <p>Tempo Total</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="stat-card">
+        <ion-card-content>
+          <div class="stat-icon">
+            <ion-icon name="checkmark-circle" color="secondary"></ion-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ totalSessions }}</h3>
+            <p>Sessões</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="stat-card">
+        <ion-card-content>
+          <div class="stat-icon">
+            <ion-icon name="flame" color="tertiary"></ion-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ currentStreak }}</h3>
+            <p>Dias Seguidos</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Routines Section -->
+    <div class="routines-section">
+      <div class="section-header">
+        <h2>Minhas Rotinas</h2>
+        <ion-button fill="clear" (click)="createNewRoutine()">
+          <ion-icon slot="start" name="add-circle"></ion-icon>
+          Nova
+        </ion-button>
+      </div>
+
+      <div class="routines-list" *ngIf="routines.length > 0">
+        <ion-card 
+          *ngFor="let routine of routines" 
+          class="routine-card"
+          [class]="'routine-' + routine.color">
+          <ion-card-content>
+            <div class="routine-header">
+              <div class="routine-info">
+                <h3>{{ routine.name }}</h3>
+                <p>{{ routine.subject }}</p>
+              </div>
+              <ion-button fill="clear" size="small" (click)="editRoutine(routine)">
+                <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+              </ion-button>
+            </div>
+
+            <div class="routine-stats">
+              <div class="stat-item">
+                <ion-icon name="time-outline"></ion-icon>
+                <span>{{ routine.pomodoroLength }} min</span>
+              </div>
+              <div class="stat-item">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <span>{{ routine.sessionsCompleted }} sessões</span>
+              </div>
+              <div class="stat-item">
+                <ion-icon name="hourglass-outline"></ion-icon>
+                <span>{{ formatTime(routine.totalTime) }}</span>
+              </div>
+            </div>
+
+            <ion-button 
+              expand="block" 
+              [color]="routine.color"
+              (click)="startPomodoro(routine)">
+              <ion-icon slot="start" name="play"></ion-icon>
+              Iniciar Estudo
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div class="empty-state" *ngIf="routines.length === 0">
+        <ion-icon name="book-outline"></ion-icon>
+        <h3>Nenhuma rotina criada</h3>
+        <p>Crie sua primeira rotina de estudos para começar!</p>
+        <ion-button expand="block" (click)="createNewRoutine()">
+          <ion-icon slot="start" name="add-circle"></ion-icon>
+          Criar Rotina
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref="/welcome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+    <div class="login-header">
+      <ion-icon name="log-in-outline" class="app-icon"></ion-icon>
+      <h1>Bem-vindo de volta!</h1>
+      <p>Entre para continuar seus estudos</p>
+    </div>
+
+    <form class="login-form" (ngSubmit)="onLogin()">
+      <ion-item lines="full">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email"
+          placeholder="seu@email.com"
+          [disabled]="isLoading"
+          required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input 
+          [type]="showPassword ? 'text' : 'password'" 
+          [(ngModel)]="password" 
+          name="password"
+          placeholder="••••••••"
+          [disabled]="isLoading"
+          required>
+        </ion-input>
+        <ion-button 
+          slot="end" 
+          fill="clear" 
+          (click)="togglePasswordVisibility()"
+          type="button">
+          <ion-icon 
+            slot="icon-only" 
+            [name]="showPassword ? 'eye-off-outline' : 'eye-outline'">
+          </ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <div class="form-options">
+        <ion-item lines="none">
+          <ion-checkbox 
+            slot="start" 
+            [(ngModel)]="rememberMe" 
+            name="rememberMe">
+          </ion-checkbox>
+          <ion-label>Lembrar-me</ion-label>
+        </ion-item>
+
+        <ion-text color="primary" class="forgot-link">
+          <a (click)="goToForgotPassword()">Esqueceu a senha?</a>
+        </ion-text>
+      </div>
+
+      <ion-button 
+        expand="block" 
+        type="submit" 
+        size="large"
+        class="login-button"
+        [disabled]="isLoading">
+        <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+        <span *ngIf="!isLoading">Entrar</span>
+      </ion-button>
+    </form>
+
+    <div class="divider">
+      <span>ou</span>
+    </div>
+
+    <div class="register-section">
+      <p>Não tem uma conta?</p>
+      <ion-button 
+        fill="outline" 
+        expand="block" 
+        (click)="goToRegister()"
+        [disabled]="isLoading">
+        Criar Conta
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -35,3 +35,74 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/**
+ * LogStudy Global Styles
+ * -----------------------------------------------------
+ */
+
+// Apply Poppins font globally
+* {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
+}
+
+// Override Ionic default font
+:root {
+  --ion-font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
+}
+
+// Smooth transitions
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Email Confirmation Alert Styles
+.email-confirmation-alert {
+  .alert-wrapper {
+    --background: var(--ion-background-color);
+    --max-width: 340px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .alert-head {
+    padding: 24px 24px 8px;
+    text-align: center;
+    
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ion-text-color);
+      margin: 0;
+    }
+    
+    .alert-sub-title {
+      font-size: 48px;
+      margin: 8px 0 0;
+      line-height: 1;
+    }
+  }
+
+  .alert-message {
+    padding: 16px 24px 24px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ion-color-medium);
+    text-align: center;
+    white-space: pre-line;
+  }
+
+  .alert-button-group {
+    padding: 0;
+    border-top: 1px solid var(--ion-border-color);
+
+    .alert-button-confirm {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ion-color-primary);
+      height: 50px;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="title-container">
+        <span class="app-name">LogStudy</span>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="home-container">
+    <!-- Stats Cards -->
+    <div class="stats-section">
+      <div class="greeting">
+        <h1>Olá, {{ userName }}! 👋</h1>
+        <p>Continue sua jornada de estudos</p>
+      </div>
+
+      <div class="stats-grid">
+        <ion-card class="stat-card">
+          <ion-card-content>
+            <div class="stat-icon">
+              <ion-icon name="time" color="primary"></ion-icon>
+            </div>
+            <h3>{{ formatTime(totalStudyTime) }}</h3>
+            <p>Hoje</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="stat-card">
+          <ion-card-content>
+            <div class="stat-icon">
+              <ion-icon name="checkmark-circle" color="secondary"></ion-icon>
+            </div>
+            <h3>{{ totalSessions }}</h3>
+            <p>Sessões</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="stat-card">
+          <ion-card-content>
+            <div class="stat-icon">
+              <ion-icon name="flame" color="tertiary"></ion-icon>
+            </div>
+            <h3>{{ currentStreak }}</h3>
+            <p>Dias</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <!-- Recent Routines -->
+    <div class="routines-section">
+      <div class="section-header">
+        <h2>Continuar Estudando</h2>
+        <ion-button fill="clear" size="small" (click)="goToEstudos()">
+          Ver tudo
+        </ion-button>
+      </div>
+
+      <!-- Loading -->
+      <div *ngIf="isLoading" class="loading-container">
+        <ion-spinner name="crescent" color="primary"></ion-spinner>
+        <p>Carregando rotinas...</p>
+      </div>
+
+      <!-- Rotinas -->
+      <div class="routines-list" *ngIf="!isLoading && routines.length > 0">
+        <ion-card 
+          *ngFor="let routine of routines" 
+          class="routine-card"
+          [ngClass]="'routine-' + routine.color"
+          (click)="startPomodoro(routine)">
+          <ion-card-content>
+            <div class="routine-header">
+              <div class="routine-info">
+                <h3>{{ routine.name }}</h3>
+                <p>{{ routine.subject }}</p>
+              </div>
+              <ion-icon name="play-circle" class="play-icon"></ion-icon>
+            </div>
+
+            <div class="routine-stats">
+              <div class="stat-item">
+                <ion-icon name="timer-outline"></ion-icon>
+                <span>{{ routine.pomodoroTime }} min</span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" *ngIf="!isLoading && routines.length === 0">
+        <ion-icon name="book-outline"></ion-icon>
+        <h3>Comece sua jornada</h3>
+        <p>Crie sua primeira rotina de estudos!</p>
+        <ion-button expand="block" (click)="createRoutine()">
+          <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+          Criar Rotina
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

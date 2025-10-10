@@ -1,0 +1,29 @@
+<ion-content class="welcome-content" [fullscreen]="true">
+  <div class="welcome-container">
+    <div class="logo-section">
+      <div class="logo-circle">
+        <ion-icon name="book"></ion-icon>
+      </div>
+      <h1 class="app-title">LogStudy</h1>
+    </div>
+
+    <div class="action-buttons">
+      <ion-button 
+        expand="block" 
+        size="large"
+        class="register-btn"
+        (click)="goToRegister()">
+        Criar uma conta
+      </ion-button>
+      
+      <ion-button 
+        expand="block" 
+        fill="clear" 
+        size="large"
+        class="login-btn"
+        (click)="goToLogin()">
+        Login
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

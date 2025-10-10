@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Histórico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="historico-container">
+    <!-- Stats Overview -->
+    <div class="stats-overview">
+      <h2>Resumo Semanal</h2>
+      <div class="stats-cards">
+        <div class="stat-card">
+          <div class="stat-value">{{ formatTime(totalTime) }}</div>
+          <div class="stat-label">Total Estudado</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">{{ totalSessions }}</div>
+          <div class="stat-label">Sessões</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">{{ formatTime(weekAverage) }}</div>
+          <div class="stat-label">Média Diária</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sessions History -->
+    <div class="sessions-section">
+      <h2>Atividades Recentes</h2>
+      
+      <div class="sessions-list">
+        <ion-card *ngFor="let session of sessions" class="session-card">
+          <ion-card-content>
+            <div class="session-header">
+              <div class="session-info">
+                <h3>{{ session.routineName }}</h3>
+                <p>{{ session.subject }}</p>
+              </div>
+              <div class="session-date">
+                <span>{{ formatDate(session.date) }}</span>
+              </div>
+            </div>
+
+            <div class="session-details">
+              <div class="detail-item">
+                <ion-icon name="time-outline"></ion-icon>
+                <span>{{ formatTime(session.duration) }}</span>
+              </div>
+              <div class="detail-item">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <span>{{ session.sessionsCompleted }} sessões</span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <div class="empty-state" *ngIf="sessions.length === 0">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <h3>Nenhuma atividade ainda</h3>
+          <p>Comece a estudar para ver seu histórico aqui!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

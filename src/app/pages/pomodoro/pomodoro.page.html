@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pomodoro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="pomodoro-container">
+    <!-- Mode Selector -->
+    <div class="mode-selector">
+      <ion-segment [(ngModel)]="currentMode" (ionChange)="resetTimer()">
+        <ion-segment-button value="pomodoro">
+          <ion-label>Foco</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="shortBreak">
+          <ion-label>Pausa</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="longBreak">
+          <ion-label>Longa</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <!-- Timer Display -->
+    <div class="timer-section">
+      <div class="mode-title">
+        <h2>{{ modeTitle }}</h2>
+      </div>
+
+      <div class="timer-circle">
+        <svg class="progress-ring" width="280" height="280">
+          <circle
+            class="progress-ring-bg"
+            stroke="var(--ion-color-step-300)"
+            stroke-width="8"
+            fill="transparent"
+            r="130"
+            cx="140"
+            cy="140"/>
+          <circle
+            class="progress-ring-progress"
+            [attr.stroke]="currentMode === 'pomodoro' ? 'var(--ion-color-primary)' : 'var(--ion-color-secondary)'"
+            stroke-width="8"
+            fill="transparent"
+            r="130"
+            cx="140"
+            cy="140"
+            [style.stroke-dasharray]="2 * Math.PI * 130"
+            [style.stroke-dashoffset]="2 * Math.PI * 130 * (1 - progress)"/>
+        </svg>
+        
+        <div class="timer-display">
+          <h1>{{ displayTime }}</h1>
+        </div>
+      </div>
+
+      <!-- Session Counter -->
+      <div class="session-counter">
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <span>{{ sessionsCompleted }} sessões completadas</span>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="controls">
+      <ion-button 
+        expand="block" 
+        size="large" 
+        (click)="toggleTimer()"
+        [color]="isRunning ? 'medium' : 'primary'">
+        <ion-icon [name]="isRunning ? 'pause' : 'play'" slot="start"></ion-icon>
+        {{ isRunning ? 'Pausar' : 'Iniciar' }}
+      </ion-button>
+
+      <ion-button 
+        expand="block" 
+        fill="outline" 
+        size="large" 
+        (click)="stopTimer()"
+        [disabled]="!isRunning && timeLeft === pomodoroLength">
+        <ion-icon name="stop" slot="start"></ion-icon>
+        Reiniciar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

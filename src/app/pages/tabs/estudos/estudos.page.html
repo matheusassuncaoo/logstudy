@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Estudos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="estudos-container">
+    <div class="header-section">
+      <h1>Minhas Rotinas</h1>
+      <p>Gerencie suas rotinas de estudo</p>
+    </div>
+
+    <ion-button 
+      expand="block" 
+      class="create-btn"
+      (click)="createNewRoutine()">
+      <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+      Criar Nova Rotina
+    </ion-button>
+
+    <!-- Loading -->
+    <div *ngIf="isLoading" class="loading-container">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+      <p>Carregando rotinas...</p>
+    </div>
+
+    <!-- Rotinas -->
+    <div class="routines-grid" *ngIf="!isLoading && routines.length > 0">
+      <ion-card 
+        *ngFor="let routine of routines" 
+        class="routine-card"
+        [ngClass]="'routine-' + routine.color"
+        (click)="startPomodoro(routine)">
+        <ion-card-content>
+          <div class="routine-color-bar"></div>
+          
+          <div class="routine-header">
+            <div class="routine-info">
+              <h3>{{ routine.name }}</h3>
+              <p>{{ routine.subject }}</p>
+            </div>
+            <ion-button fill="clear" size="small" (click)="showRoutineOptions(routine, $event)">
+              <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </div>
+
+          <div class="routine-details">
+            <div class="detail-row">
+              <div class="detail-item">
+                <ion-icon name="timer-outline"></ion-icon>
+                <span>{{ routine.pomodoroTime }}min</span>
+              </div>
+              <div class="detail-item">
+                <ion-icon name="cafe-outline"></ion-icon>
+                <span>{{ routine.shortBreakTime }}min / {{ routine.longBreakTime }}min</span>
+              </div>
+            </div>
+          </div>
+
+          <ion-button 
+            expand="block"
+            [color]="routine.color"
+            class="start-btn"
+            (click)="startPomodoro(routine); $event.stopPropagation()">
+            <ion-icon slot="start" name="play-circle"></ion-icon>
+            Iniciar
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="!isLoading && routines.length === 0">
+      <ion-icon name="book-outline"></ion-icon>
+      <h3>Nenhuma rotina criada</h3>
+      <p>Crie sua primeira rotina de estudos para começar!</p>
+    </div>
+  </div>
+</ion-content>

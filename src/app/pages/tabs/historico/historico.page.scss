@@ -1,0 +1,144 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.historico-container {
+  padding: 0 16px 80px 16px;
+}
+
+.stats-overview {
+  padding: 24px 0;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 16px 8px;
+    color: var(--ion-text-color);
+  }
+
+  .stats-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    .stat-card {
+      background: var(--ion-card-background);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+
+      .stat-value {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--ion-color-primary);
+        margin-bottom: 4px;
+      }
+
+      .stat-label {
+        font-size: 11px;
+        color: var(--ion-color-medium);
+        line-height: 1.3;
+      }
+    }
+  }
+}
+
+.sessions-section {
+  margin-top: 16px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 16px 8px;
+    color: var(--ion-text-color);
+  }
+
+  .sessions-list {
+    .session-card {
+      margin: 0 0 12px 0;
+      background: var(--ion-card-background);
+      border-radius: 12px;
+
+      ion-card-content {
+        padding: 16px;
+
+        .session-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 12px;
+
+          .session-info {
+            flex: 1;
+
+            h3 {
+              font-size: 16px;
+              font-weight: 600;
+              margin: 0 0 4px 0;
+              color: var(--ion-text-color);
+            }
+
+            p {
+              font-size: 13px;
+              color: var(--ion-color-medium);
+              margin: 0;
+            }
+          }
+
+          .session-date {
+            background: var(--ion-color-step-100);
+            padding: 4px 12px;
+            border-radius: 8px;
+
+            span {
+              font-size: 12px;
+              font-weight: 500;
+              color: var(--ion-color-primary);
+            }
+          }
+        }
+
+        .session-details {
+          display: flex;
+          gap: 20px;
+
+          .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--ion-color-medium);
+
+            ion-icon {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 24px;
+
+      ion-icon {
+        font-size: 64px;
+        color: var(--ion-color-medium);
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0 0 8px 0;
+        color: var(--ion-text-color);
+      }
+
+      p {
+        font-size: 14px;
+        color: var(--ion-color-medium);
+        margin: 0;
+      }
+    }
+  }
+}

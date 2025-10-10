@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="perfil-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="avatar-container">
+        <ion-avatar class="user-avatar">
+          <img *ngIf="user?.avatar" [src]="user!.avatar" alt="Avatar">
+          <ion-icon name="person-circle" *ngIf="!user?.avatar"></ion-icon>
+        </ion-avatar>
+      </div>
+      <h2>{{ user?.name || 'Usuário' }}</h2>
+      <p>{{ user?.email || 'email@exemplo.com' }}</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-cards">
+      <ion-card class="stat-card">
+        <ion-card-content>
+          <ion-icon name="trophy-outline" color="warning"></ion-icon>
+          <h3>{{ currentStreak }}</h3>
+          <p>Dias de Streak</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="stat-card">
+        <ion-card-content>
+          <ion-icon name="stats-chart-outline" color="success"></ion-icon>
+          <h3>{{ longestStreak }}</h3>
+          <p>Maior Streak</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Menu Options -->
+    <div class="menu-section">
+      <h3>Conta</h3>
+      <ion-list>
+        <ion-item button (click)="goToSettings()">
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          <ion-label>Configurações</ion-label>
+          <ion-icon name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div class="menu-section">
+      <h3>Sobre</h3>
+      <ion-list>
+        <ion-item button>
+          <ion-icon name="document-text-outline" slot="start"></ion-icon>
+          <ion-label>Termos de Uso</ion-label>
+          <ion-icon name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item button>
+          <ion-icon name="document-text-outline" slot="start"></ion-icon>
+          <ion-label>Política de Privacidade</ion-label>
+          <ion-icon name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item button>
+          <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+          <ion-label>Sobre o LogStudy</ion-label>
+          <ion-icon name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="code-slash-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h4>Versão</h4>
+            <p>1.0.0</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="logout-section">
+      <ion-button 
+        expand="block" 
+        color="danger" 
+        fill="outline"
+        (click)="confirmLogout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Sair da Conta
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
