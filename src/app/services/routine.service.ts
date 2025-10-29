@@ -11,6 +11,7 @@ import {
   RoutineStats 
 } from '../models/index';
 import { environment } from '../../environments/environment';
+import { getPreset } from '../config/pomodoro-presets';
 
 @Injectable({
   providedIn: 'root'
@@ -41,26 +42,36 @@ export class RoutineService {
 
   /**
    * Carrega todas as rotinas do usuário logado
+   * Force refresh: sempre busca do servidor
    */
-  loadRoutines(): Observable<Routine[]> {
+  loadRoutines(forceRefresh: boolean = true): Observable<Routine[]> {
     const userId = this.auth.currentUserValue?.id;
     if (!userId) {
       return throwError(() => new Error('Usuário não autenticado'));
     }
 
+    console.log('🔄 Carregando rotinas do servidor...');
+    
     return from(this.fetchRoutines(userId)).pipe(
       tap(routines => {
+        console.log(`✅ ${routines.length} rotinas carregadas`);
         this.routinesSubject.next(routines);
-        // Salvar no cache offline
+        // Salvar no cache offline apenas como backup
         this.storage.set('routines_cache', routines);
       }),
       catchError(error => {
-        console.error('Erro ao carregar rotinas:', error);
-        // Tentar carregar do cache offline
-        return from(this.storage.get('routines_cache')).pipe(
-          map(cached => cached || []),
-          tap(routines => this.routinesSubject.next(routines))
-        );
+        console.error('❌ Erro ao carregar rotinas:', error);
+        // Apenas em caso de erro de rede, usar cache
+        if (!forceRefresh) {
+          return from(this.storage.get('routines_cache')).pipe(
+            map(cached => cached || []),
+            tap(routines => {
+              console.log('📦 Usando rotinas do cache');
+              this.routinesSubject.next(routines);
+            })
+          );
+        }
+        return throwError(() => error);
       })
     );
   }
@@ -120,6 +131,9 @@ export class RoutineService {
   private async insertRoutine(routineData: CreateRoutineDto): Promise<Routine> {
     const userId = this.auth.currentUserValue?.id;
     if (!userId) throw new Error('Usuário não autenticado');
+    // Derivar pausas automaticamente quando não informadas, usando presets 15/20/25/30
+  const presetPomodoro = routineData.pomodoroTime || environment.pomodoro.workDuration;
+  const derived = getPreset(presetPomodoro);
 
     const routineToInsert = {
       user_id: userId,
@@ -127,10 +141,10 @@ export class RoutineService {
       subject: routineData.subject,
       color: routineData.color,
       icon: routineData.icon,
-      pomodoro_time: routineData.pomodoroTime || environment.pomodoro.workDuration,
-      short_break_time: routineData.shortBreakTime || environment.pomodoro.shortBreakDuration,
-      long_break_time: routineData.longBreakTime || environment.pomodoro.longBreakDuration,
-      intervals_before_long_break: routineData.intervalsBeforeLongBreak || environment.pomodoro.sessionsUntilLongBreak,
+      pomodoro_time: presetPomodoro,
+      short_break_time: routineData.shortBreakTime ?? derived.shortBreak,
+      long_break_time: routineData.longBreakTime ?? derived.longBreak,
+      intervals_before_long_break: routineData.intervalsBeforeLongBreak ?? derived.sessionsBeforeLongBreak,
       is_active: true
     };
 
@@ -172,7 +186,16 @@ export class RoutineService {
     if (updates.subject !== undefined) updateData.subject = updates.subject;
     if (updates.color !== undefined) updateData.color = updates.color;
     if (updates.icon !== undefined) updateData.icon = updates.icon;
-    if (updates.pomodoroTime !== undefined) updateData.pomodoro_time = updates.pomodoroTime;
+    if (updates.pomodoroTime !== undefined) {
+      updateData.pomodoro_time = updates.pomodoroTime;
+      // Se pausas não vierem informadas junto, recalcular a partir do novo pomodoro
+      if (updates.shortBreakTime === undefined || updates.longBreakTime === undefined || updates.intervalsBeforeLongBreak === undefined) {
+  const d = getPreset(updates.pomodoroTime);
+        if (updates.shortBreakTime === undefined) updateData.short_break_time = d.shortBreak;
+        if (updates.longBreakTime === undefined) updateData.long_break_time = d.longBreak;
+        if (updates.intervalsBeforeLongBreak === undefined) updateData.intervals_before_long_break = d.sessionsBeforeLongBreak;
+      }
+    }
     if (updates.shortBreakTime !== undefined) updateData.short_break_time = updates.shortBreakTime;
     if (updates.longBreakTime !== undefined) updateData.long_break_time = updates.longBreakTime;
     if (updates.intervalsBeforeLongBreak !== undefined) updateData.intervals_before_long_break = updates.intervalsBeforeLongBreak;

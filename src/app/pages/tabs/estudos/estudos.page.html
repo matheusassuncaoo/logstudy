@@ -37,8 +37,11 @@
           
           <div class="routine-header">
             <div class="routine-info">
-              <h3>{{ routine.name }}</h3>
-              <p>{{ routine.subject }}</p>
+              <span class="routine-emoji">{{ routine.icon || '📚' }}</span>
+              <div class="routine-text">
+                <h3>{{ routine.name }}</h3>
+                <p>{{ routine.subject }}</p>
+              </div>
             </div>
             <ion-button fill="clear" size="small" (click)="showRoutineOptions(routine, $event)">
               <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
@@ -52,7 +55,7 @@
                 <span>{{ routine.pomodoroTime }}min</span>
               </div>
               <div class="detail-item">
-                <ion-icon name="cafe-outline"></ion-icon>
+                <ion-icon name="coffee-outline"></ion-icon>
                 <span>{{ routine.shortBreakTime }}min / {{ routine.longBreakTime }}min</span>
               </div>
             </div>

@@ -3,6 +3,8 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    // Redireciona para uma rota existente ao iniciar o app
+    // Evita tela preta quando a rota alvo não existe
     redirectTo: 'onboarding',
     pathMatch: 'full',
   },
@@ -21,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'register',
     loadComponent: () => import('./pages/register/register.page').then((m) => m.RegisterPage),
+  },
+  {
+    path: 'forgot-password',
+    loadComponent: () => import('./pages/forgot-password/forgot-password.page').then((m) => m.ForgotPasswordPage),
   },
   {
     path: 'tabs',
@@ -78,5 +84,9 @@ export const routes: Routes = [
   {
     path: 'privacy',
     loadComponent: () => import('./pages/privacy/privacy.page').then( m => m.PrivacyPage)
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./pages/about/about.page').then( m => m.AboutPage)
   },
 ];

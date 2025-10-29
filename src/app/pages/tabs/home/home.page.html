@@ -15,7 +15,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="home-container">
-    <!-- Stats Cards -->
+    <!-- Stats + XP -->
     <div class="stats-section">
       <div class="greeting">
         <h1>Olá, {{ userName }}! 👋</h1>
@@ -53,6 +53,15 @@
           </ion-card-content>
         </ion-card>
       </div>
+
+      <!-- XP Progress -->
+      <div class="xp-card" *ngIf="xpProgress as xp">
+        <div class="xp-header">
+          <span>Nível {{ xp.level }}</span>
+          <span>{{ xp.xp }} XP</span>
+        </div>
+        <ion-progress-bar [value]="(xpPct/100)" color="primary"></ion-progress-bar>
+      </div>
     </div>
 
     <!-- Recent Routines -->
@@ -70,6 +79,21 @@
         <p>Carregando rotinas...</p>
       </div>
 
+      <!-- Daily Challenges -->
+      <div class="challenges" *ngIf="challenges?.length">
+        <h3>Desafios do dia</h3>
+        <div class="challenge-list">
+          <div class="challenge" *ngFor="let c of challenges">
+            <div class="challenge-title">{{ c.title }}</div>
+            <div class="challenge-progress">
+              <ion-progress-bar [value]="c.progress / c.target"></ion-progress-bar>
+              <span>{{ c.progress }}/{{ c.target }}</span>
+            </div>
+            <div class="challenge-reward">+{{ c.rewardXp }} XP</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Rotinas -->
       <div class="routines-list" *ngIf="!isLoading && routines.length > 0">
         <ion-card 
@@ -80,8 +104,11 @@
           <ion-card-content>
             <div class="routine-header">
               <div class="routine-info">
-                <h3>{{ routine.name }}</h3>
-                <p>{{ routine.subject }}</p>
+                <span class="routine-emoji">{{ routine.icon || '📚' }}</span>
+                <div class="routine-text">
+                  <h3>{{ routine.name }}</h3>
+                  <p>{{ routine.subject }}</p>
+                </div>
               </div>
               <ion-icon name="play-circle" class="play-icon"></ion-icon>
             </div>

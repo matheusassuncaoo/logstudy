@@ -166,19 +166,20 @@ swiper-slide {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 40px;
+        padding: 0;
 
         .icon-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 16px;
-          width: 100%;
+          gap: 20px;
+          width: auto;
+          height: auto;
 
           .mini-icon {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 20px;
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -196,7 +197,7 @@ swiper-slide {
             }
 
             ion-icon {
-              font-size: 32px;
+              font-size: 36px;
               color: rgba(255, 255, 255, 0.9);
             }
           }
@@ -244,6 +245,7 @@ swiper-slide {
   width: 100%;
   max-width: 450px;
   padding: 20px 24px;
+  margin: 0 auto;
   animation: fadeInUp 0.8s ease-out 1s both;
 
   .continue-btn {
@@ -253,14 +255,12 @@ swiper-slide {
     font-weight: 700;
     font-size: 16px;
     height: 56px;
-    margin: 0;
+    margin: 0 auto;
     text-transform: none;
     transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 8px rgba(0, 241, 255, 0.25));
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0, 241, 255, 0.5);
     }
 
     &:active {

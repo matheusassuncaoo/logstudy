@@ -51,6 +51,18 @@
   --ion-font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
 }
 
+// Remove shadow de botões principais (não afeta botões internos de inputs)
+ion-button:not(ion-item ion-button) {
+  --box-shadow: none !important;
+  --background-hover-opacity: 0.08;
+  --background-activated-opacity: 0.16;
+  --ripple-color: transparent;
+}
+
+ion-button:not(ion-item ion-button)::part(native) {
+  box-shadow: none !important;
+}
+
 // Smooth transitions
 * {
   -webkit-font-smoothing: antialiased;

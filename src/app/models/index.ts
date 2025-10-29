@@ -12,3 +12,6 @@ export * from './pomodoro.model';
 
 // Study History models
 export * from './study-history.model';
+
+// Gamification models
+export * from './gamification.model';

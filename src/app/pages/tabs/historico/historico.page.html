@@ -6,61 +6,95 @@
 
 <ion-content [fullscreen]="true">
   <div class="historico-container">
-    <!-- Stats Overview -->
-    <div class="stats-overview">
-      <h2>Resumo Semanal</h2>
-      <div class="stats-cards">
-        <div class="stat-card">
-          <div class="stat-value">{{ formatTime(totalTime) }}</div>
-          <div class="stat-label">Total Estudado</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">{{ totalSessions }}</div>
-          <div class="stat-label">Sessões</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">{{ formatTime(weekAverage) }}</div>
-          <div class="stat-label">Média Diária</div>
-        </div>
-      </div>
+    <!-- Period Selector -->
+    <div class="period-selector">
+      <ion-segment [(ngModel)]="selectedPeriod" (ionChange)="loadData()">
+        <ion-segment-button value="day">
+          <ion-label>Hoje</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="week">
+          <ion-label>Semana</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="month">
+          <ion-label>Mês</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </div>
 
-    <!-- Sessions History -->
-    <div class="sessions-section">
-      <h2>Atividades Recentes</h2>
-      
-      <div class="sessions-list">
-        <ion-card *ngFor="let session of sessions" class="session-card">
-          <ion-card-content>
-            <div class="session-header">
-              <div class="session-info">
-                <h3>{{ session.routineName }}</h3>
-                <p>{{ session.subject }}</p>
-              </div>
-              <div class="session-date">
-                <span>{{ formatDate(session.date) }}</span>
-              </div>
-            </div>
+    <!-- Loading -->
+    <div *ngIf="isLoading" class="loading-container">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+      <p>Carregando histórico...</p>
+    </div>
 
-            <div class="session-details">
-              <div class="detail-item">
-                <ion-icon name="time-outline"></ion-icon>
-                <span>{{ formatTime(session.duration) }}</span>
-              </div>
-              <div class="detail-item">
-                <ion-icon name="checkmark-circle-outline"></ion-icon>
-                <span>{{ session.sessionsCompleted }} sessões</span>
-              </div>
+    <!-- Stats Overview -->
+    <div class="stats-overview" *ngIf="!isLoading">
+      <h2>
+        <span *ngIf="selectedPeriod === 'day'">Resumo de Hoje</span>
+        <span *ngIf="selectedPeriod === 'week'">Resumo Semanal</span>
+        <span *ngIf="selectedPeriod === 'month'">Resumo Mensal</span>
+      </h2>
+      
+      <div class="stats-cards">
+        <ion-card class="stat-card">
+          <ion-card-content>
+            <div class="stat-icon">
+              <ion-icon name="time-outline" color="primary"></ion-icon>
             </div>
+            <div class="stat-value">{{ formatTime(totalTime) }}</div>
+            <div class="stat-label">Total Estudado</div>
+          </ion-card-content>
+        </ion-card>
+        
+        <ion-card class="stat-card">
+          <ion-card-content>
+            <div class="stat-icon">
+              <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
+            </div>
+            <div class="stat-value">{{ totalSessions }}</div>
+            <div class="stat-label">Sessões</div>
+          </ion-card-content>
+        </ion-card>
+        
+        <ion-card class="stat-card" *ngIf="selectedPeriod !== 'day'">
+          <ion-card-content>
+            <div class="stat-icon">
+              <ion-icon name="stats-chart-outline" color="warning"></ion-icon>
+            </div>
+            <div class="stat-value">{{ formatTime(averageTime) }}</div>
+            <div class="stat-label">Média Diária</div>
           </ion-card-content>
         </ion-card>
 
-        <div class="empty-state" *ngIf="sessions.length === 0">
-          <ion-icon name="calendar-outline"></ion-icon>
-          <h3>Nenhuma atividade ainda</h3>
-          <p>Comece a estudar para ver seu histórico aqui!</p>
-        </div>
+        <ion-card class="stat-card" *ngIf="selectedPeriod === 'day'">
+          <ion-card-content>
+            <div class="stat-icon">
+              <ion-icon name="trophy-outline" color="warning"></ion-icon>
+            </div>
+            <div class="stat-value">{{ roundProgress(dailyStats?.goalProgress || 0) }}%</div>
+            <div class="stat-label">Meta Diária</div>
+          </ion-card-content>
+        </ion-card>
       </div>
+    </div>
+
+    <!-- Progress Bar for Goal -->
+    <div class="goal-progress" *ngIf="!isLoading && selectedPeriod === 'day' && dailyStats">
+      <div class="progress-header">
+        <span>Progresso da Meta Diária</span>
+        <span>{{ roundProgress(dailyStats.goalProgress) }}%</span>
+      </div>
+      <ion-progress-bar 
+        [value]="dailyStats.goalProgress / 100" 
+        color="primary">
+      </ion-progress-bar>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="!isLoading && totalSessions === 0">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <h3>Nenhuma atividade ainda</h3>
+      <p>Comece a estudar para ver seu histórico aqui!</p>
     </div>
   </div>
 </ion-content>

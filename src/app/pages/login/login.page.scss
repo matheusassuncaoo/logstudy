@@ -47,8 +47,19 @@ ion-content {
     --min-height: 56px;
     --padding-start: 16px;
     --padding-end: 16px;
+    --inner-padding-end: 8px;
+    --inner-padding-start: 0;
     margin-bottom: 16px;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+
+    ion-icon[slot="start"] {
+      margin-right: 16px;
+      margin-left: 0;
+      font-size: 20px;
+      color: var(--ion-color-medium);
+    }
 
     ion-label {
       font-size: 14px;
@@ -59,6 +70,21 @@ ion-content {
       font-size: 16px;
       --padding-top: 12px;
       --padding-bottom: 12px;
+    }
+
+    ion-button {
+      --padding-start: 8px;
+      --padding-end: 8px;
+      margin: 0;
+      height: 40px;
+      min-width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      ion-icon {
+        font-size: 22px;
+      }
     }
   }
 
@@ -81,6 +107,73 @@ ion-content {
       margin: 0;
       font-size: 14px;
       font-weight: 500;
+    }
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 24px 0;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  span {
+    padding: 0 16px;
+    color: var(--ion-color-medium);
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 8px;
+
+  ion-item {
+    --background: transparent;
+    --border-color: transparent;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    margin: 0;
+    min-height: auto;
+    flex-shrink: 0;
+    
+    ion-label {
+      white-space: nowrap;
+      font-size: 14px;
+      margin-left: 8px;
+    }
+    
+    ion-checkbox {
+      margin: 0;
+    }
+  }
+
+  .forgot-link {
+    a {
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--ion-color-primary);
+      white-space: nowrap;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

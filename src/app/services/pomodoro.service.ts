@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, interval, Subscription, from, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { SupabaseService } from './supabase.service';
+import { GamificationService } from './gamification.service';
 import { AuthService } from './auth.service';
 import {
   PomodoroSession,
@@ -23,7 +24,8 @@ export class PomodoroService {
 
   constructor(
     private supabase: SupabaseService,
-    private auth: AuthService
+    private auth: AuthService,
+    private gamification: GamificationService
   ) {}
 
   /**
@@ -128,9 +130,16 @@ export class PomodoroService {
 
     if (error) throw error;
 
-    // Se completou um pomodoro, atualizar histórico
+    // Se completou um pomodoro, atualizar histórico e gamificação
     if (completed && timer?.type === 'pomodoro') {
       await this.updateStudyHistory(userId, timer.duration);
+      // Award XP and progress challenges
+      try {
+        await this.gamification.load();
+        await this.gamification.awardStudy(timer.duration);
+      } catch (e) {
+        console.warn('Gamification update failed:', e);
+      }
     }
   }
 

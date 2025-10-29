@@ -48,8 +48,19 @@ ion-content {
     --min-height: 56px;
     --padding-start: 16px;
     --padding-end: 16px;
+    --inner-padding-end: 8px;
+    --inner-padding-start: 0;
     margin-bottom: 16px;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+
+    ion-icon[slot="start"] {
+      margin-right: 16px;
+      margin-left: 0;
+      font-size: 20px;
+      color: var(--ion-color-medium);
+    }
 
     ion-label {
       font-size: 14px;
@@ -57,23 +68,24 @@ ion-content {
     }
 
     ion-input {
-      --padding-start: 8px;
-      --padding-end: 8px;
+      font-size: 16px;
       --padding-top: 12px;
       --padding-bottom: 12px;
-      font-size: 16px;
-    }
-    
-    ion-icon[slot="start"] {
-      margin-right: 12px;
-      font-size: 20px;
-      color: var(--ion-color-medium);
     }
     
     ion-button[slot="end"] {
       --padding-start: 8px;
       --padding-end: 8px;
       margin: 0;
+      height: 40px;
+      min-width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      ion-icon {
+        font-size: 22px;
+      }
     }
   }
 
@@ -96,32 +108,37 @@ ion-content {
     margin-top: 20px;
     margin-bottom: 8px;
     padding: 0 4px;
+    display: flex;
+    align-items: flex-start;
 
     ion-checkbox {
       --size: 20px;
       --checkbox-background-checked: var(--ion-color-primary);
       margin-right: 12px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
       
-      ion-text {
-        font-size: 13px;
-        line-height: 1.6;
-        color: var(--ion-color-medium);
+    ion-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--ion-color-medium);
+      flex: 1;
+      
+      a {
+        color: var(--ion-color-primary);
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
         
-        a {
-          color: var(--ion-color-primary);
-          text-decoration: none;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          
-          &:hover {
-            text-decoration: underline;
-            color: var(--ion-color-primary-shade);
-          }
-          
-          &:active {
-            color: var(--ion-color-primary-tint);
-          }
+        &:hover {
+          text-decoration: underline;
+          color: var(--ion-color-primary-shade);
+        }
+        
+        &:active {
+          color: var(--ion-color-primary-tint);
         }
       }
     }
@@ -138,6 +155,30 @@ ion-content {
       margin: 0;
       color: var(--ion-color-medium);
     }
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 24px 0;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  span {
+    padding: 0 16px;
+    color: var(--ion-color-medium);
+    font-size: 14px;
+    font-weight: 500;
   }
 }
 

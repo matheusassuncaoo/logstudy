@@ -47,8 +47,8 @@
         <ion-item lines="full">
           <ion-label>Ícone</ion-label>
           <ion-select [(ngModel)]="routine.icon" name="icon" interface="popover">
-            <ion-select-option *ngFor="let icon of iconOptions" [value]="icon">
-              <ion-icon [name]="icon"></ion-icon> {{ icon }}
+            <ion-select-option *ngFor="let icon of iconOptions" [value]="icon.value">
+              <span style="font-size: 20px; margin-right: 8px;">{{ icon.emoji }}</span> {{ icon.name }}
             </ion-select-option>
           </ion-select>
         </ion-item>

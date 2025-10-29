@@ -12,7 +12,6 @@
     ion-icon {
       font-size: 24px;
       margin-bottom: 2px;
-      filter: drop-shadow(0 2px 6px rgba(0, 241, 255, 0.15));
     }
 
     ion-label {
@@ -25,7 +24,6 @@
       ion-icon,
       ion-label {
         color: var(--ion-color-primary);
-        filter: drop-shadow(0 2px 8px rgba(0, 241, 255, 0.3));
       }
     }
   }

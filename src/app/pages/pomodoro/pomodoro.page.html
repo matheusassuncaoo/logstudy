@@ -79,9 +79,20 @@
         expand="block" 
         fill="outline" 
         size="large" 
+        color="warning"
+        (click)="skipSession()"
+        [disabled]="!isRunning">
+        <ion-icon name="play-skip-forward-outline" slot="start"></ion-icon>
+        Pular Sessão
+      </ion-button>
+
+      <ion-button 
+        expand="block" 
+        fill="outline" 
+        size="large" 
         (click)="stopTimer()"
-        [disabled]="!isRunning && timeLeft === pomodoroLength">
-        <ion-icon name="stop" slot="start"></ion-icon>
+        [disabled]="!isRunning && timeLeft === getCurrentModeLength()">
+        <ion-icon name="stop-circle-outline" slot="start"></ion-icon>
         Reiniciar
       </ion-button>
     </div>

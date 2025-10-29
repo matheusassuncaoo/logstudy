@@ -27,7 +27,7 @@ export class CreateRoutinePage implements OnInit {
     longBreakTime: 15,
     intervalsBeforeLongBreak: 4,
     color: 'primary',
-    icon: 'book-outline'
+    icon: '📚'
   };
 
   colorOptions = [
@@ -40,14 +40,22 @@ export class CreateRoutinePage implements OnInit {
   ];
 
   iconOptions = [
-    'book-outline',
-    'calculator-outline',
-    'flask-outline',
-    'code-slash-outline',
-    'brush-outline',
-    'language-outline',
-    'basketball-outline',
-    'musical-notes-outline'
+    { name: 'Livro', emoji: '📚', value: '📚' },
+    { name: 'Matemática', emoji: '🔢', value: '🔢' },
+    { name: 'Ciência', emoji: '🧪', value: '🧪' },
+    { name: 'Programação', emoji: '💻', value: '💻' },
+    { name: 'Arte', emoji: '🎨', value: '🎨' },
+    { name: 'Idiomas', emoji: '🌍', value: '🌍' },
+    { name: 'Esporte', emoji: '⚽', value: '⚽' },
+    { name: 'Música', emoji: '🎵', value: '🎵' },
+    { name: 'Medicina', emoji: '🏥', value: '🏥' },
+    { name: 'Engenharia', emoji: '⚙️', value: '⚙️' },
+    { name: 'História', emoji: '📜', value: '📜' },
+    { name: 'Geografia', emoji: '🗺️', value: '🗺️' },
+    { name: 'Química', emoji: '⚗️', value: '⚗️' },
+    { name: 'Física', emoji: '🔬', value: '🔬' },
+    { name: 'Biologia', emoji: '🧬', value: '🧬' },
+    { name: 'Economia', emoji: '💰', value: '💰' }
   ];
 
   constructor(
@@ -90,7 +98,7 @@ export class CreateRoutinePage implements OnInit {
           longBreakTime: routine.longBreakTime,
           intervalsBeforeLongBreak: routine.intervalsBeforeLongBreak,
           color: routine.color || 'primary',
-          icon: routine.icon || 'book-outline'
+          icon: routine.icon || '📚'
         };
         loading.dismiss();
       },

@@ -1,0 +1,133 @@
+.about-content {
+  --background: #121212;
+}
+
+.about-container {
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.logo-section {
+  text-align: center;
+  margin-bottom: 32px;
+
+  .app-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+
+    ion-icon {
+      font-size: 50px;
+      color: #000000;
+    }
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .version {
+    color: var(--ion-color-medium);
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.description {
+  margin-bottom: 24px;
+
+  p {
+    color: var(--ion-color-step-600);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+}
+
+ion-card {
+  margin-bottom: 24px;
+
+  ion-card-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  ion-list {
+    background: transparent;
+
+    ion-item {
+      --background: transparent;
+      --padding-start: 0;
+
+      ion-icon {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+.developer-info {
+  text-align: center;
+  margin-bottom: 24px;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ion-color-step-600);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    ion-icon {
+      font-size: 18px;
+    }
+  }
+
+  .developer-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ion-text-color);
+    margin: 0 0 8px 0;
+  }
+
+  .developer-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--ion-color-primary);
+    font-size: 14px;
+    margin: 0;
+
+    ion-icon {
+      font-size: 16px;
+    }
+  }
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  p {
+    color: var(--ion-color-medium);
+    font-size: 12px;
+    margin: 0;
+  }
+}

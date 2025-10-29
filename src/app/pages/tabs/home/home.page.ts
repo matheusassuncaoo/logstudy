@@ -7,7 +7,8 @@ import { time, checkmarkCircle, flame, notificationsOutline, playCircle, addCirc
 import { AuthService } from '../../../services/auth.service';
 import { RoutineService } from '../../../services/routine.service';
 import { StudyHistoryService } from '../../../services/study-history.service';
-import { Routine, DailyStats, UserStreak } from '../../../models';
+import { Routine, DailyStats, UserStreak, XPProgress, DailyChallenge } from '../../../models';
+import { GamificationService } from '../../../services/gamification.service';
 
 @Component({
   selector: 'app-home',
@@ -22,12 +23,15 @@ export class HomePage implements OnInit {
   userStreak: UserStreak | null = null;
   isLoading = false;
   userName = '';
+  xpProgress: XPProgress | null = null;
+  challenges: DailyChallenge[] = [];
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private routineService: RoutineService,
-    private studyHistoryService: StudyHistoryService,
+  private studyHistoryService: StudyHistoryService,
+  private gamification: GamificationService,
     private loadingController: LoadingController,
     private toastController: ToastController
   ) {}
@@ -44,7 +48,16 @@ export class HomePage implements OnInit {
 
     const user = this.authService.currentUserValue;
     this.userName = user?.name || 'Usuário';
-    
+    // carregar gamificação
+    this.gamification.load().then(() => {
+      this.xpProgress = this.gamification.getProgress();
+      this.challenges = this.gamification.getDailyChallenges();
+    });
+  }
+
+  ionViewWillEnter() {
+    // Recarregar dados sempre que entrar na página
+    console.log('🔄 Recarregando dados da Home...');
     this.loadData();
   }
 
@@ -87,6 +100,10 @@ export class HomePage implements OnInit {
           console.error('Erro ao carregar streak:', error);
         }
       });
+
+      // Gamificação atualizada também
+      this.xpProgress = this.gamification.getProgress();
+      this.challenges = this.gamification.getDailyChallenges();
 
     } catch (error: any) {
       await this.showToast(error.message || 'Erro ao carregar dados', 'danger');
@@ -140,4 +157,7 @@ export class HomePage implements OnInit {
     }
     return `${mins}m`;
   }
+
+  get xpLevel(): number { return this.xpProgress?.level || 1; }
+  get xpPct(): number { return this.xpProgress?.progressPct || 0; }
 }

@@ -3,8 +3,8 @@ export const environment = {
   
   // Supabase Configuration (Production)
   supabase: {
-    url: process.env['SUPABASE_URL'] || 'https://seu-projeto.supabase.co',
-    anonKey: process.env['SUPABASE_ANON_KEY'] || 'sua-anon-key-aqui'
+    url: 'https://rhzijueznhpfqfgsfqxu.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJoemlqdWV6bmhwZnFmZ3NmcXh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAxMjE0NDMsImV4cCI6MjA3NTY5NzQ0M30.MKm1PzIMf22FD31f_EvXWx1lr7v2uw-pR533c8DkeA0'
   },
   
   // Storage Configuration

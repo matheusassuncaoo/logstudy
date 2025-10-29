@@ -216,7 +216,12 @@ export class AuthService {
 
   private async checkSession(): Promise<void> {
     const { data } = await this.supabase.auth.getSession();
-    if (data.session?.user) await this.loadUserProfile(data.session.user.id);
+    if (data.session?.user) {
+      await this.loadUserProfile(data.session.user.id);
+    } else {
+      // Garante consistência: se não houver sessão válida, limpa qualquer usuário persistido
+      this.clearAuthData();
+    }
   }
 
   private async loadUserProfile(userId: string): Promise<void> {
@@ -249,6 +254,20 @@ export class AuthService {
   async getAccessToken(): Promise<string | null> {
     const { data } = await this.supabase.auth.getSession();
     return data.session?.access_token || null;
+  }
+
+  resetPassword(email: string): Observable<void> {
+    return from(this.sendPasswordReset(email)).pipe(
+      catchError(error => throwError(() => new Error(error.message)))
+    );
+  }
+
+  private async sendPasswordReset(email: string): Promise<void> {
+    const { error } = await this.supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`
+    });
+
+    if (error) throw new Error(error.message);
   }
 
   private handleAuthResponse(response: AuthResponse): void {

@@ -12,7 +12,7 @@ export interface PomodoroSession {
 }
 
 export interface CreatePomodoroSessionDto {
-  routineId: number;
+  routineId?: number; // Opcional, pode ser vinculado depois
   type: 'pomodoro' | 'short_break' | 'long_break';
   duration: number;
 }

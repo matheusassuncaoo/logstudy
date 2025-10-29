@@ -111,8 +111,7 @@ export class LoginPage implements OnInit {
   }
 
   goToForgotPassword() {
-    // TODO: Implementar recuperação de senha
-    this.showToast('Funcionalidade em desenvolvimento', 'warning');
+    this.router.navigate(['/forgot-password']);
   }
 
   goBack() {
