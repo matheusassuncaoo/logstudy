@@ -1,0 +1,78 @@
+/**
+ * Responsive Mixins and Breakpoints
+ * -----------------------------------------------------
+ * Consistent responsive design utilities for mobile screens
+ */
+
+// Mobile breakpoints
+$screen-xs-max: 360px;     // Extra small devices (small phones)
+$screen-sm-min: 361px;     // Small devices (standard phones)
+$screen-sm-max: 480px;     // Small to medium phones
+$screen-md-min: 481px;     // Medium devices (large phones)
+$screen-md-max: 768px;     // Medium to large phones/small tablets
+$screen-lg-min: 769px;     // Large devices (tablets)
+
+// Mixins for responsive design
+@mixin xs-only {
+  @media (max-width: #{$screen-xs-max}) {
+    @content;
+  }
+}
+
+@mixin sm-and-down {
+  @media (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+
+@mixin md-and-down {
+  @media (max-width: #{$screen-md-max}) {
+    @content;
+  }
+}
+
+@mixin md-and-up {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+@mixin lg-and-up {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Responsive font sizes
+@mixin responsive-font($base-size, $xs-size: null, $sm-size: null) {
+  font-size: $base-size;
+  
+  @if $sm-size {
+    @include sm-and-down {
+      font-size: $sm-size;
+    }
+  }
+  
+  @if $xs-size {
+    @include xs-only {
+      font-size: $xs-size;
+    }
+  }
+}
+
+// Responsive spacing
+@mixin responsive-padding($base-padding, $xs-padding: null, $sm-padding: null) {
+  padding: $base-padding;
+  
+  @if $sm-padding {
+    @include sm-and-down {
+      padding: $sm-padding;
+    }
+  }
+  
+  @if $xs-padding {
+    @include xs-only {
+      padding: $xs-padding;
+    }
+  }
+}
