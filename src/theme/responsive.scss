@@ -2,17 +2,18 @@
  * Responsive Mixins and Breakpoints
  * -----------------------------------------------------
  * Consistent responsive design utilities for mobile screens
+ * 
+ * Note: This file provides reusable mixins for future development.
+ * Current pages use direct @media queries for simplicity and clarity,
+ * which is also a valid SCSS approach for responsive design.
  */
 
-// Mobile breakpoints
+// Mobile breakpoints used throughout the application
 $screen-xs-max: 360px;     // Extra small devices (small phones)
-$screen-sm-min: 361px;     // Small devices (standard phones)
 $screen-sm-max: 480px;     // Small to medium phones
-$screen-md-min: 481px;     // Medium devices (large phones)
 $screen-md-max: 768px;     // Medium to large phones/small tablets
-$screen-lg-min: 769px;     // Large devices (tablets)
 
-// Mixins for responsive design
+// Mixins for responsive design (available for future use)
 @mixin xs-only {
   @media (max-width: #{$screen-xs-max}) {
     @content;
@@ -27,18 +28,6 @@ $screen-lg-min: 769px;     // Large devices (tablets)
 
 @mixin md-and-down {
   @media (max-width: #{$screen-md-max}) {
-    @content;
-  }
-}
-
-@mixin md-and-up {
-  @media (min-width: #{$screen-md-min}) {
-    @content;
-  }
-}
-
-@mixin lg-and-up {
-  @media (min-width: #{$screen-lg-min}) {
     @content;
   }
 }
@@ -76,3 +65,4 @@ $screen-lg-min: 769px;     // Large devices (tablets)
     }
   }
 }
+
