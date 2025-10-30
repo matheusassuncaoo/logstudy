@@ -4,6 +4,10 @@ ion-content {
 
 .settings-container {
   padding-bottom: 32px;
+
+  @media (max-width: 360px) {
+    padding-bottom: 24px;
+  }
 }
 
 .settings-section {
@@ -16,6 +20,16 @@ ion-content {
     letter-spacing: 0.5px;
     margin: 16px 16px 12px 16px;
     color: var(--ion-color-medium);
+
+    @media (max-width: 480px) {
+      font-size: 15px;
+      margin: 14px 12px 10px 12px;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 14px;
+      margin: 12px 12px 8px 12px;
+    }
   }
 
   ion-list {
@@ -32,20 +46,52 @@ ion-content {
       margin-right: 16px;
       font-size: 24px;
       color: var(--ion-color-medium);
+
+      @media (max-width: 480px) {
+        margin-right: 14px;
+        font-size: 22px;
+      }
+
+      @media (max-width: 360px) {
+        margin-right: 12px;
+        font-size: 20px;
+      }
     }
 
     ion-icon[slot="end"] {
       color: var(--ion-color-medium);
       font-size: 20px;
+
+      @media (max-width: 360px) {
+        font-size: 18px;
+      }
     }
 
     ion-avatar {
       width: 56px;
       height: 56px;
 
+      @media (max-width: 480px) {
+        width: 50px;
+        height: 50px;
+      }
+
+      @media (max-width: 360px) {
+        width: 44px;
+        height: 44px;
+      }
+
       ion-icon {
         font-size: 56px;
         color: var(--ion-color-primary);
+
+        @media (max-width: 480px) {
+          font-size: 50px;
+        }
+
+        @media (max-width: 360px) {
+          font-size: 44px;
+        }
       }
     }
 
@@ -53,11 +99,19 @@ ion-content {
       h3 {
         font-weight: 600;
         margin-bottom: 4px;
+
+        @media (max-width: 360px) {
+          font-size: 15px;
+        }
       }
 
       p {
         color: var(--ion-color-medium);
         font-size: 14px;
+
+        @media (max-width: 360px) {
+          font-size: 13px;
+        }
       }
     }
 
@@ -72,6 +126,10 @@ ion-content {
         font-size: 15px;
         font-weight: 600;
         color: var(--ion-text-color);
+
+        @media (max-width: 360px) {
+          font-size: 14px;
+        }
       }
 
       .value-badge {
@@ -80,6 +138,16 @@ ion-content {
         padding: 4px 12px;
         border-radius: 12px;
         background: rgba(var(--ion-color-primary-rgb), 0.1);
+
+        @media (max-width: 480px) {
+          font-size: 17px;
+          padding: 4px 10px;
+        }
+
+        @media (max-width: 360px) {
+          font-size: 16px;
+          padding: 3px 8px;
+        }
       }
     }
 
@@ -87,10 +155,18 @@ ion-content {
       display: block;
       font-size: 14px;
       margin-top: 4px;
+
+      @media (max-width: 360px) {
+        font-size: 13px;
+      }
     }
 
     ion-range {
       padding: 20px 0 8px;
+
+      @media (max-width: 360px) {
+        padding: 16px 0 6px;
+      }
 
       &::part(tick) {
         background: var(--ion-color-medium);
@@ -106,6 +182,11 @@ ion-content {
         padding: 8px 12px;
         border-radius: 8px;
         transform: scale(1.1);
+
+        @media (max-width: 360px) {
+          font-size: 14px;
+          padding: 6px 10px;
+        }
       }
     }
   }

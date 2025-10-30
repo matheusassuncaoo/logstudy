@@ -3,19 +3,39 @@
   margin: 0 auto;
   padding: 16px;
 
+  @media (max-width: 480px) {
+    padding: 12px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 12px 10px;
+  }
+
   .last-update {
     text-align: center;
     margin-bottom: 24px;
+
+    @media (max-width: 360px) {
+      margin-bottom: 20px;
+    }
     
     p {
       font-size: 14px;
       color: var(--ion-color-medium);
       font-style: italic;
+
+      @media (max-width: 360px) {
+        font-size: 13px;
+      }
     }
   }
 
   section {
     margin-bottom: 32px;
+
+    @media (max-width: 360px) {
+      margin-bottom: 24px;
+    }
 
     h2 {
       font-size: 20px;
@@ -23,6 +43,17 @@
       color: var(--ion-color-primary);
       margin-bottom: 12px;
       margin-top: 24px;
+
+      @media (max-width: 480px) {
+        font-size: 19px;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 18px;
+        margin-bottom: 10px;
+        margin-top: 16px;
+      }
     }
 
     h3 {
@@ -31,6 +62,16 @@
       color: var(--ion-color-secondary);
       margin-bottom: 8px;
       margin-top: 16px;
+
+      @media (max-width: 480px) {
+        font-size: 15px;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 14px;
+        margin-bottom: 6px;
+        margin-top: 12px;
+      }
     }
 
     p {
@@ -39,17 +80,48 @@
       margin-bottom: 12px;
       text-align: justify;
       color: var(--ion-color-light);
+
+      @media (max-width: 480px) {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
     }
 
     ul {
       padding-left: 24px;
       margin-bottom: 12px;
 
+      @media (max-width: 480px) {
+        padding-left: 20px;
+      }
+
+      @media (max-width: 360px) {
+        padding-left: 16px;
+        margin-bottom: 10px;
+      }
+
       li {
         font-size: 15px;
         line-height: 1.7;
         margin-bottom: 8px;
         color: var(--ion-color-light);
+
+        @media (max-width: 480px) {
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        @media (max-width: 360px) {
+          font-size: 13px;
+          line-height: 1.5;
+          margin-bottom: 6px;
+        }
 
         strong {
           color: var(--ion-color-primary);
@@ -63,6 +135,11 @@
     margin-top: 32px;
     margin-bottom: 32px;
 
+    @media (max-width: 360px) {
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+
     ion-button {
       height: 54px;
       font-size: 16px;
@@ -71,6 +148,17 @@
       letter-spacing: 0.5px;
       margin-bottom: 12px;
       --border-radius: 12px;
+
+      @media (max-width: 480px) {
+        height: 50px;
+        font-size: 15px;
+      }
+
+      @media (max-width: 360px) {
+        height: 48px;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
     }
   }
 }

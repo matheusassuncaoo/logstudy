@@ -9,6 +9,14 @@ ion-content {
   padding: 24px 20px;
   max-width: 500px;
   margin: 0 auto;
+
+  @media (max-width: 480px) {
+    padding: 20px 16px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 16px 12px;
+  }
 }
 
 .mode-selector {
@@ -51,6 +59,14 @@ ion-content {
   .mode-title {
     margin-bottom: 56px;
 
+    @media (max-width: 480px) {
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 360px) {
+      margin-bottom: 32px;
+    }
+
     h2 {
       font-size: 32px;
       font-weight: 700;
@@ -62,6 +78,15 @@ ion-content {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+
+      @media (max-width: 480px) {
+        font-size: 28px;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 24px;
+        letter-spacing: -0.5px;
+      }
     }
   }
 
@@ -98,6 +123,16 @@ ion-content {
         font-variant-numeric: tabular-nums;
         letter-spacing: -3px;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        @media (max-width: 480px) {
+          font-size: 64px;
+          letter-spacing: -2px;
+        }
+
+        @media (max-width: 360px) {
+          font-size: 56px;
+          letter-spacing: -1px;
+        }
       }
     }
   }

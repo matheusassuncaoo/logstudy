@@ -10,6 +10,10 @@ ion-content {
   justify-content: center;
   max-width: 480px;
   margin: 0 auto;
+
+  @media (max-width: 360px) {
+    padding: 16px;
+  }
 }
 
 .login-header {
@@ -21,6 +25,11 @@ ion-content {
     color: var(--ion-color-primary);
     margin-bottom: 16px;
     filter: drop-shadow(0 2px 12px rgba(0, 241, 255, 0.25));
+
+    @media (max-width: 360px) {
+      font-size: 64px;
+      margin-bottom: 12px;
+    }
   }
 
   h1 {
@@ -28,12 +37,20 @@ ion-content {
     font-weight: 700;
     margin: 0 0 8px 0;
     color: var(--ion-text-color);
+
+    @media (max-width: 360px) {
+      font-size: 24px;
+    }
   }
 
   p {
     font-size: 16px;
     color: var(--ion-color-medium);
     margin: 0;
+
+    @media (max-width: 360px) {
+      font-size: 14px;
+    }
   }
 }
 

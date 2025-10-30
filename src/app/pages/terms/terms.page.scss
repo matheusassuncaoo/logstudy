@@ -6,26 +6,56 @@ ion-content {
   max-width: 800px;
   margin: 0 auto;
   padding: 24px;
+
+  @media (max-width: 480px) {
+    padding: 20px 16px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 16px 12px;
+  }
   
   .last-update {
     text-align: center;
     margin-bottom: 32px;
+
+    @media (max-width: 360px) {
+      margin-bottom: 24px;
+    }
     
     p {
       font-size: 14px;
       color: var(--ion-color-medium);
       font-style: italic;
+
+      @media (max-width: 360px) {
+        font-size: 13px;
+      }
     }
   }
   
   section {
     margin-bottom: 32px;
+
+    @media (max-width: 360px) {
+      margin-bottom: 24px;
+    }
     
     h2 {
       font-size: 20px;
       font-weight: 700;
       color: var(--ion-color-primary);
       margin-bottom: 16px;
+
+      @media (max-width: 480px) {
+        font-size: 19px;
+        margin-bottom: 14px;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
     }
     
     p {
@@ -34,17 +64,49 @@ ion-content {
       color: var(--ion-text-color);
       margin-bottom: 12px;
       text-align: justify;
+
+      @media (max-width: 480px) {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
     }
     
     ul {
       margin: 16px 0;
       padding-left: 24px;
+
+      @media (max-width: 480px) {
+        margin: 14px 0;
+        padding-left: 20px;
+      }
+
+      @media (max-width: 360px) {
+        margin: 12px 0;
+        padding-left: 16px;
+      }
       
       li {
         font-size: 15px;
         line-height: 1.7;
         color: var(--ion-text-color);
         margin-bottom: 8px;
+
+        @media (max-width: 480px) {
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        @media (max-width: 360px) {
+          font-size: 13px;
+          line-height: 1.5;
+          margin-bottom: 6px;
+        }
       }
     }
     
@@ -62,6 +124,10 @@ ion-content {
   
   .acceptance {
     margin: 40px 0 24px 0;
+
+    @media (max-width: 360px) {
+      margin: 32px 0 20px 0;
+    }
     
     ion-button {
       height: 54px;
@@ -69,6 +135,16 @@ ion-content {
       font-weight: 600;
       --border-radius: 12px;
       text-transform: none;
+
+      @media (max-width: 480px) {
+        height: 50px;
+        font-size: 15px;
+      }
+
+      @media (max-width: 360px) {
+        height: 48px;
+        font-size: 14px;
+      }
     }
   }
 }

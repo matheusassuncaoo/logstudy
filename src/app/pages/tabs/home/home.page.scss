@@ -15,6 +15,14 @@ ion-content {
 
 .home-container {
   padding: 0 16px 80px 16px;
+
+  @media (max-width: 480px) {
+    padding: 0 12px 80px 12px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 0 12px 80px 12px;
+  }
 }
 
 .loading-container {
@@ -39,17 +47,41 @@ ion-content {
   .greeting {
     padding: 16px 8px 24px 8px;
 
+    @media (max-width: 480px) {
+      padding: 14px 4px 20px 4px;
+    }
+
+    @media (max-width: 360px) {
+      padding: 12px 4px 16px 4px;
+    }
+
     h1 {
       font-size: 32px;
       font-weight: 700;
       margin: 0 0 4px 0;
       color: var(--ion-text-color);
+
+      @media (max-width: 480px) {
+        font-size: 28px;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 26px;
+      }
     }
 
     p {
       font-size: 16px;
       color: var(--ion-color-medium);
       margin: 0;
+
+      @media (max-width: 480px) {
+        font-size: 15px;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 14px;
+      }
     }
   }
 
@@ -57,6 +89,16 @@ ion-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 12px;
+
+    @media (max-width: 480px) {
+      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 360px) {
+      gap: 8px;
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     .stat-card {
       margin: 0;
@@ -71,9 +113,27 @@ ion-content {
         gap: 8px;
         text-align: center;
 
+        @media (max-width: 480px) {
+          padding: 14px 10px;
+          gap: 6px;
+        }
+
+        @media (max-width: 360px) {
+          padding: 12px 8px;
+          gap: 6px;
+        }
+
         .stat-icon {
           ion-icon {
             font-size: 28px;
+
+            @media (max-width: 480px) {
+              font-size: 26px;
+            }
+
+            @media (max-width: 360px) {
+              font-size: 24px;
+            }
           }
         }
 
@@ -82,12 +142,24 @@ ion-content {
           font-weight: 700;
           margin: 0;
           color: var(--ion-text-color);
+
+          @media (max-width: 480px) {
+            font-size: 17px;
+          }
+
+          @media (max-width: 360px) {
+            font-size: 16px;
+          }
         }
 
         p {
           font-size: 11px;
           color: var(--ion-color-medium);
           margin: 0;
+
+          @media (max-width: 360px) {
+            font-size: 10px;
+          }
         }
       }
     }

@@ -4,6 +4,14 @@ ion-content {
 
 .historico-container {
   padding: 0 16px 80px 16px;
+
+  @media (max-width: 480px) {
+    padding: 0 12px 80px 12px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 0 12px 80px 12px;
+  }
 }
 
 .period-selector {
@@ -50,11 +58,25 @@ ion-content {
 .stats-overview {
   padding: 24px 0;
 
+  @media (max-width: 360px) {
+    padding: 20px 0;
+  }
+
   h2 {
     font-size: 20px;
     font-weight: 600;
     margin: 0 0 16px 8px;
     color: var(--ion-text-color);
+
+    @media (max-width: 480px) {
+      font-size: 19px;
+      margin: 0 0 14px 4px;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 18px;
+      margin: 0 0 12px 4px;
+    }
   }
 
   .stats-cards {
@@ -62,18 +84,48 @@ ion-content {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 12px;
 
+    @media (max-width: 480px) {
+      gap: 10px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 360px) {
+      gap: 8px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     .stat-card {
       margin: 0;
       
       ion-card-content {
         padding: 16px;
         text-align: center;
+
+        @media (max-width: 480px) {
+          padding: 14px 12px;
+        }
+
+        @media (max-width: 360px) {
+          padding: 12px 10px;
+        }
         
         .stat-icon {
           margin-bottom: 8px;
+
+          @media (max-width: 360px) {
+            margin-bottom: 6px;
+          }
           
           ion-icon {
             font-size: 24px;
+
+            @media (max-width: 480px) {
+              font-size: 22px;
+            }
+
+            @media (max-width: 360px) {
+              font-size: 20px;
+            }
           }
         }
 
@@ -82,12 +134,25 @@ ion-content {
           font-weight: 700;
           color: var(--ion-text-color);
           margin-bottom: 4px;
+
+          @media (max-width: 480px) {
+            font-size: 17px;
+          }
+
+          @media (max-width: 360px) {
+            font-size: 16px;
+            margin-bottom: 2px;
+          }
         }
 
         .stat-label {
           font-size: 12px;
           color: var(--ion-color-medium);
           line-height: 1.3;
+
+          @media (max-width: 360px) {
+            font-size: 11px;
+          }
         }
       }
     }
