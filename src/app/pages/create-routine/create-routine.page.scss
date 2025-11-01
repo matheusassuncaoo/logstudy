@@ -51,9 +51,19 @@ ion-content {
       --border-color: var(--ion-item-border-color);
       margin-bottom: 12px;
       --border-radius: 12px;
+      --min-height: 56px;
 
       @media (max-width: 360px) {
         margin-bottom: 10px;
+      }
+      
+      // Android fix: Ensure inputs are properly sized and visible
+      ion-input {
+        min-height: 48px;
+        
+        input {
+          min-height: 48px !important;
+        }
       }
 
       .value-display {

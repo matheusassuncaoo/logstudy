@@ -72,6 +72,74 @@ ion-button:not(ion-item ion-button)::part(native) {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Android Input Fixes - Critical for proper input display on Android devices
+ion-input {
+  // Ensure inputs are properly sized and visible on Android
+  --padding-start: 0;
+  --padding-end: 0;
+  min-height: 48px;
+  
+  input {
+    // Critical: Prevent Android from hiding or shrinking inputs
+    min-height: 48px !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    
+    // Ensure proper text rendering on Android
+    -webkit-text-fill-color: var(--ion-text-color) !important;
+    
+    // Fix for Android input opacity issues
+    opacity: 1 !important;
+    
+    // Prevent Android zoom on focus (while keeping 16px as base)
+    font-size: 16px !important;
+    
+    // Ensure inputs are always visible
+    background: transparent !important;
+  }
+}
+
+// Fix for ion-item containing inputs - Android specific
+ion-item {
+  // Ensure items properly contain inputs on Android
+  ion-input {
+    // Force proper height for Android
+    --min-height: 48px;
+    
+    // Ensure input elements within ion-item are visible
+    .native-input {
+      min-height: 48px !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+    }
+  }
+  
+  // Fix for labels with floating position
+  ion-label[position="floating"] {
+    // Ensure labels don't hide inputs on Android
+    transform-origin: left top;
+  }
+}
+
+// Fix for custom inputs (like in forgot-password page)
+.custom-input,
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+  // Ensure custom inputs work on Android
+  min-height: 48px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  font-size: 16px !important;
+  
+  // Fix text visibility on Android
+  -webkit-text-fill-color: currentColor !important;
+  opacity: 1 !important;
+  
+  // Ensure proper background
+  background-color: transparent !important;
+}
+
 // Email Confirmation Alert Styles
 .email-confirmation-alert {
   .alert-wrapper {
