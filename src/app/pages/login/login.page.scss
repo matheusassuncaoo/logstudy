@@ -76,6 +76,7 @@ ion-content {
       margin-left: 0;
       font-size: 20px;
       color: var(--ion-color-medium);
+      flex-shrink: 0;
     }
 
     ion-label {
@@ -87,6 +88,13 @@ ion-content {
       font-size: 16px;
       --padding-top: 12px;
       --padding-bottom: 12px;
+      
+      // Android fix: Ensure input is always visible and properly sized
+      min-height: 48px;
+      
+      input {
+        min-height: 48px !important;
+      }
     }
 
     ion-button {
@@ -98,6 +106,7 @@ ion-content {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
 
       ion-icon {
         font-size: 22px;
