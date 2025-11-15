@@ -1,0 +1,112 @@
+name: Bug Report
+description: Reportar um bug ou problema
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees:
+  - matheusassuncaoo
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar um bug! Por favor, preencha o máximo de informações possível.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do Bug
+      description: Descreva claramente o problema encontrado
+      placeholder: O que aconteceu?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para Reproduzir
+      description: Como reproduzir o problema?
+      placeholder: |
+        1. Vá para '...'
+        2. Clique em '...'
+        3. Role até '...'
+        4. Veja o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento Esperado
+      description: O que deveria acontecer?
+      placeholder: Descreva o comportamento esperado
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamento Atual
+      description: O que está acontecendo?
+      placeholder: Descreva o comportamento atual
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Plataforma
+      description: Onde o bug ocorre?
+      options:
+        - Web
+        - Android
+        - Ambos
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Versão
+      description: Qual versão do app você está usando?
+      placeholder: ex. 1.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Navegador (se aplicável)
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Outro
+        - N/A
+
+  - type: input
+    id: device
+    attributes:
+      label: Dispositivo
+      description: Qual dispositivo/sistema operacional?
+      placeholder: ex. Samsung Galaxy S21, Android 12
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Adicione screenshots se possível
+      placeholder: Cole ou arraste imagens aqui
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs/Console
+      description: Logs do console ou erros relevantes
+      render: shell
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Informações Adicionais
+      description: Qualquer outra informação relevante

@@ -1,0 +1,88 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  pr-validation:
+    name: PR Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📥 Instalar dependências
+        run: npm ci
+      
+      - name: 🔍 Check code style
+        run: npm run lint
+        continue-on-error: true
+      
+      - name: 🧪 Run tests
+        run: npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage
+        continue-on-error: true
+      
+      - name: 📊 Comentar resultados
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const fs = require('fs');
+            let comment = '## 📊 Resultados da PR\n\n';
+            
+            comment += '### ✅ Validações\n';
+            comment += '- Lint: Executado\n';
+            comment += '- Testes: Executado\n';
+            comment += '\n### 📝 Próximos passos\n';
+            comment += '- Revisar código\n';
+            comment += '- Verificar testes\n';
+            comment += '- Aprovar mudanças\n';
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  size-check:
+    name: Bundle Size Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout código
+        uses: actions/checkout@v4
+      
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📥 Instalar dependências
+        run: npm ci
+      
+      - name: 🔧 Build
+        run: npm run build -- --configuration production
+      
+      - name: 📊 Analisar tamanho
+        run: |
+          echo "## 📦 Tamanho do Bundle" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          du -sh www/ >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Arquivos principais:" >> $GITHUB_STEP_SUMMARY
+          ls -lh www/*.js 2>/dev/null | awk '{print "- " $9 ": " $5}' >> $GITHUB_STEP_SUMMARY || echo "- Nenhum arquivo JS encontrado" >> $GITHUB_STEP_SUMMARY

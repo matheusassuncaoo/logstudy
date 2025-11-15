@@ -12,15 +12,17 @@
     <a href="#-contribuidores">Contribuidores</a>
   </p>
 
+  ![CI/CD](https://github.com/matheusassuncaoo/logstudy/workflows/CI/CD%20Pipeline/badge.svg)
+  ![Release](https://github.com/matheusassuncaoo/logstudy/workflows/Build%20Release/badge.svg)
   ![Ionic](https://img.shields.io/badge/Ionic-7.0-3880FF?style=for-the-badge&logo=ionic&logoColor=white)
   ![Android](https://img.shields.io/badge/Android-Studio-3DDC84?style=for-the-badge&logo=android&logoColor=white)
   ![Java](https://img.shields.io/badge/JDK-25-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
   ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
   <p>
-    <img src="https://img.shields.io/github/license/seuusuario/logstudy?style=for-the-badge" alt="Licença">
-    <img src="https://img.shields.io/github/last-commit/seuusuario/logstudy?style=for-the-badge" alt="Último Commit">
-    <img src="https://img.shields.io/github/issues/seuusuario/logstudy?style=for-the-badge" alt="Issues">
+    <img src="https://img.shields.io/github/license/matheusassuncaoo/logstudy?style=for-the-badge" alt="Licença">
+    <img src="https://img.shields.io/github/last-commit/matheusassuncaoo/logstudy?style=for-the-badge" alt="Último Commit">
+    <img src="https://img.shields.io/github/issues/matheusassuncaoo/logstudy?style=for-the-badge" alt="Issues">
   </p>
 </div>
 
