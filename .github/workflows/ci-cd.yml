@@ -168,7 +168,7 @@ jobs:
           path: www
       
       - name: 📄 Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       
       - name: 📤 Upload to Pages
         uses: actions/upload-pages-artifact@v3
