@@ -15,11 +15,12 @@
       <ion-list>
         <ion-item>
           <ion-avatar slot="start">
-            <ion-icon name="person-circle" *ngIf="!user.avatar"></ion-icon>
+            <img [src]="user?.avatar" *ngIf="user?.avatar" />
+            <ion-icon name="person-circle" *ngIf="!user?.avatar"></ion-icon>
           </ion-avatar>
           <ion-label>
-            <h3>{{ user.name }}</h3>
-            <p>{{ user.email }}</p>
+            <h3>{{ user?.name || 'Usuário' }}</h3>
+            <p>{{ user?.email || 'email@exemplo.com' }}</p>
           </ion-label>
         </ion-item>
 

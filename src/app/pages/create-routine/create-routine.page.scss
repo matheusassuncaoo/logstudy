@@ -68,10 +68,51 @@ ion-content {
     }
 
     ion-range {
-      padding: 16px 0;
+      padding: 20px 0 8px;
+      --bar-height: 4px;
+      --bar-border-radius: 8px;
+      --knob-size: 28px;
+      --knob-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
       @media (max-width: 360px) {
-        padding: 14px 0;
+        padding: 16px 0 6px;
+        --knob-size: 24px;
+      }
+
+      &::part(tick) {
+        background: var(--ion-color-medium);
+        opacity: 0.3;
+      }
+
+      &::part(tick-active) {
+        background: var(--ion-color-primary);
+        opacity: 0.6;
+      }
+
+      &::part(pin) {
+        font-size: 14px;
+        font-weight: 700;
+        padding: 6px 10px;
+        border-radius: 8px;
+        transform: translateY(-8px) scale(1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+
+        @media (max-width: 360px) {
+          font-size: 13px;
+          padding: 5px 8px;
+          min-width: 32px;
+        }
+      }
+
+      &::part(bar) {
+        background: var(--ion-color-light);
+      }
+
+      &::part(bar-active) {
+        background: var(--ion-color-primary);
       }
     }
   }
