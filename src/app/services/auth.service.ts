@@ -72,7 +72,7 @@ export class AuthService {
 
     if (authError) throw new Error(authError.message);
     if (!authData.user) throw new Error('Erro ao criar usuário');
-    
+
     // Se email confirmation estiver habilitado, authData.session será null
     // Nesse caso, informamos ao usuário
     if (!authData.session) {
@@ -87,7 +87,7 @@ export class AuthService {
         updatedAt: new Date(),
         lastLogin: undefined
       };
-      
+
       throw new Error(`Conta criada! Verifique seu email (${data.email}) para confirmar o cadastro.`);
     }
 
@@ -107,7 +107,7 @@ export class AuthService {
       updatedAt: new Date(),
       lastLogin: undefined
     };
-    
+
     const response: AuthResponse = {
       user,
       accessToken: authData.session.access_token,

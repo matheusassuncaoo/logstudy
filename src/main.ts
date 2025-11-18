@@ -7,15 +7,15 @@ import { Drivers } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { importProvidersFrom } from '@angular/core';
 import { addIcons } from 'ionicons';
-import { 
+import {
   personOutline,
   person,
   personCircle,
   personCircleOutline,
-  mailOutline, 
-  lockClosedOutline, 
+  mailOutline,
+  lockClosedOutline,
   keyOutline,
-  eyeOutline, 
+  eyeOutline,
   eyeOffOutline,
   bookOutline,
   timeOutline,
