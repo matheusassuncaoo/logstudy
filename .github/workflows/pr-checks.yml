@@ -36,7 +36,7 @@ jobs:
         continue-on-error: true
       
       - name: 📊 Comentar resultados
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         if: always()
         with:
           script: |
