@@ -1,0 +1,32 @@
+{
+  "name": "Node.js 25 & Ionic CLI",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "25"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "workbench.colorTheme": "Dracula",
+        "files.autoSave": "afterDelay",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        }
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ionic.ionic",
+        "ritwickdey.live-server",
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-rename-tag",
+        "dracula-theme.theme-dracula",
+        "redhat.vscode-yaml"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install -g @ionic/cli && echo 'Ionic CLI instalado!'"
+}
