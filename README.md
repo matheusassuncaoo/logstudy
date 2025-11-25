@@ -38,15 +38,15 @@ Com interface intuitiva e recursos de organização, o LogStudy permite criar me
 
 Este é o planejamento de entregas do projeto. Conforme as funcionalidades forem implementadas, os itens serão marcados.
 
--   [ ] **Timer Pomodoro:** Cronômetro configurável com intervalos de 25/5/15 minutos.
--   [ ] **Gerenciamento de Tarefas:** CRUD completo para criar, editar e deletar tarefas de estudo.
--   [ ] **Categorias de Estudo:** Organização por matérias ou disciplinas.
--   [ ] **Histórico de Sessões:** Registro completo de todas as sessões Pomodoro realizadas.
+-   [✅] **Timer Pomodoro:** Cronômetro configurável com intervalos de 25/5/15 minutos.
+-   [✅] **Gerenciamento de Tarefas:** CRUD completo para criar, editar e deletar tarefas de estudo.
+-   [✅] **Categorias de Estudo:** Organização por matérias ou disciplinas.
+-   [✅] **Histórico de Sessões:** Registro completo de todas as sessões Pomodoro realizadas.
 -   [ ] **Relatórios e Estatísticas:** Gráficos de produtividade diária, semanal e mensal.
--   [ ] **Notificações Push:** Alertas para início/fim de sessões e pausas.
--   [ ] **Modo Noturno:** Interface dark mode para estudos noturnos.
--   [ ] **Sincronização em Nuvem:** Backup e sincronização de dados entre dispositivos.
--   [ ] **Gamificação:** Sistema de conquistas e recompensas por metas atingidas.
+-   [✅] **Notificações Push:** Alertas para início/fim de sessões e pausas.
+-   [✅] **Modo Noturno:** Interface dark mode para estudos noturnos.
+-   [✅] **Sincronização em Nuvem:** Backup e sincronização de dados entre dispositivos.
+-   [✅] **Gamificação:** Sistema de conquistas e recompensas por metas atingidas.
 -   [ ] **Exportação de Dados:** Relatórios em PDF ou CSV.
 
 ---
